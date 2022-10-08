@@ -48,80 +48,31 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-4">
-            <div class="d-flex justify-content-center">
-              <div class="col-md-10">
-                  <h1 class="about_pavadinimas text-center p-4">Paslaugos</h1>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center;  margin-top: 30px;" class="card-title">Užsiėmimas darbo dienomis</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
-                            @forelse ($cares as $care)
-                            @if($care->when=="Darbo diena")
-                              {{$care->take_of_care}}<br/>
-                            @endif
-                          @empty
-                            <div>Paslaugos nenustatytos</div>
-                          @endforelse
-                            </div>
-                          <img src="/image/Fotoo13.png" style="margin-top: 40px;" class="cares_foto card-img-top">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center; margin-top: 30px;" class="card-title">Užsiėmimas savaitgaliais</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
-                            @forelse ($cares as $care)
-                            @if($care->when=="Savaitgali")
-                              {{$care->take_of_care}}<br/>
-                            @endif
-                          @empty
-                            <div>Paslaugos nenustatytos</div>
-                          @endforelse
-                            </div>
-                          <img src="/image/Fotoo14.png" style="margin-top: 40px;" class="cares_foto card-img-top">
-                        </div>
-                      </div>
-                    </div>                    
+        <main>
+            <div class="container mt-4">
+                <div class="d-flex justify-content-center">
+                  <div class="col-md-10">
+                    <a href="{{ url('/add_cares') }}" class="btn btn-success btn-lg">Atgal</a>
+                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;"">Šunų paslaugų redagavimas</h1>
+                      <form action="" method="POST">
+                        @csrf
+                        <div class="row">
+                          <div class="col" style="margin-top: 40px;">
+                            <input value="{{ $cares->take_of_care }}" type="text" class="form-control" placeholder="Užsiėmimas" aria-label="take_of_care" id="take_of_care" name="take_of_care">
+                          </div>
+                          <div class="col" style="margin-top: 40px;">
+                            <input value="{{ $cares->when }}" type="text" class="form-control" placeholder="Prižiūrėjimas" aria-label="when" id="when" name="when">
+                          </div>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 40px;">
+                            <button type="submit" class="btn btn-success btn-lg">Redaguoti</button>
+                          </div>
+                          </div>
+                      </form>
                   </div>
-                  @if ($errors->any())
-                    <div class="alert alert-danger">
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                        @endforeach
-                      </ul>
-                    </div>
-                  @endif
-                  @if (auth()->user()->admin)
-                  <form action="cares" method="POST" style="margin-top: 70px;">
-                    @csrf
-                  <div class="row">
-                  <div class="col">
-                    <input value="{{ old('take_of_care') }}" type="text" class="form-control" placeholder="Užsiėmimas" aria-label="take_of_care" id="take_of_care" name="take_of_care">
-                  </div>
-                  <div class="col">
-                    <input value="{{ old('when') }}" type="text" class="form-control" placeholder="Prižiūrėjimas" aria-label="when" id="when" name="when">
-                  </div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-success">Pridėti</button>
-                    <a href="{{ url('/add_cares') }}" class="btn btn-success">Redaguoti</a>
-                  </div>
-                  </form>
-                  @endif
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <a href="{{ url('/order_care') }}" class="btn btn-success">Užsisakyti</a>
-                  </div>
-                  </div>
-                  </form>
               </div>
           </div>
-      </div>
-  </main>
+      </main>
+        </main>
     <footer>
         <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>

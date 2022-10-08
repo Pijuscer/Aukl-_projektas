@@ -48,80 +48,49 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-4">
-            <div class="d-flex justify-content-center">
-              <div class="col-md-10">
-                  <h1 class="about_pavadinimas text-center p-4">Paslaugos</h1>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center;  margin-top: 30px;" class="card-title">Užsiėmimas darbo dienomis</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
-                            @forelse ($cares as $care)
-                            @if($care->when=="Darbo diena")
-                              {{$care->take_of_care}}<br/>
-                            @endif
-                          @empty
-                            <div>Paslaugos nenustatytos</div>
-                          @endforelse
-                            </div>
-                          <img src="/image/Fotoo13.png" style="margin-top: 40px;" class="cares_foto card-img-top">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center; margin-top: 30px;" class="card-title">Užsiėmimas savaitgaliais</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
-                            @forelse ($cares as $care)
-                            @if($care->when=="Savaitgali")
-                              {{$care->take_of_care}}<br/>
-                            @endif
-                          @empty
-                            <div>Paslaugos nenustatytos</div>
-                          @endforelse
-                            </div>
-                          <img src="/image/Fotoo14.png" style="margin-top: 40px;" class="cares_foto card-img-top">
-                        </div>
-                      </div>
-                    </div>                    
-                  </div>
-                  @if ($errors->any())
-                    <div class="alert alert-danger">
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                        @endforeach
-                      </ul>
-                    </div>
-                  @endif
-                  @if (auth()->user()->admin)
-                  <form action="cares" method="POST" style="margin-top: 70px;">
-                    @csrf
-                  <div class="row">
-                  <div class="col">
-                    <input value="{{ old('take_of_care') }}" type="text" class="form-control" placeholder="Užsiėmimas" aria-label="take_of_care" id="take_of_care" name="take_of_care">
-                  </div>
-                  <div class="col">
-                    <input value="{{ old('when') }}" type="text" class="form-control" placeholder="Prižiūrėjimas" aria-label="when" id="when" name="when">
-                  </div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-success">Pridėti</button>
-                    <a href="{{ url('/add_cares') }}" class="btn btn-success">Redaguoti</a>
-                  </div>
-                  </form>
-                  @endif
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <a href="{{ url('/order_care') }}" class="btn btn-success">Užsisakyti</a>
-                  </div>
-                  </div>
-                  </form>
-              </div>
-          </div>
-      </div>
-  </main>
+        <main>
+            <div class="container mt-4">
+                <a href="{{ url('/cares') }}" class="btn btn-success btn-lg">Atgal</a>
+                <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Paslaugos</h1>
+                <table class="table table-success table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Užsiėmimas</th>
+                        <th scope="col">Prižiūrėjimas</th>
+                        <th scope="col"></th>
+                                    <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                      <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                      <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                                    </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                    </svg></th>
+                                  </tr>
+                      </tr>
+                    </thead>
+                <tbody>
+                @foreach ($cares as $cares2)
+                    <tr>
+                        <th scope="row">{{ $cares2->id }}</th>
+                        <td>{{$cares2->take_of_care }}</td>
+                        <td>{{$cares2->when }}</td>
+                        <td>{{ Str::limit($cares2->description, 50) }}</td>
+                        <td>
+                            <a class='no-underline' href="/add_cares/edit/{{$cares2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                              </svg></a>
+                            <a class='no-underline' href="/add_cares/remove/{{$cares2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                </table>
+            </div>
+        </main>
     <footer>
         <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>

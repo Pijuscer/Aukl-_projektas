@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricesController;
+use App\Http\Controllers\CareController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,10 +26,19 @@ Route::get('/about', function () {
 Route::get('/prices', [PricesController::class, 'viewForm']);
 Route::post('/prices', [PricesController::class, 'store']);
 Route::get('/add_prices', [PricesController::class, 'index']);
+Route::get('/add_prices/edit/{id}', [PricesController::class, 'editForm']);
+Route::post('/add_prices/edit/{id}', [PricesController::class, 'edit']);
+Route::get('/add_prices/remove/ask/{id}', [PricesController::class, 'removeForm']);
+Route::get('/add_prices/remove/{id}', [PricesController::class, 'remove']);
 
-Route::get('/cares', function () {
-    return view('cares');
-});
+Route::get('/cares', [CareController::class, 'viewForm']);
+Route::post('/cares', [CareController::class, 'store']);
+Route::get('/add_cares', [CareController::class, 'index']);
+Route::get('/add_cares/edit/{id}', [CareController::class, 'editForm']);
+Route::post('/add_cares/edit/{id}', [CareController::class, 'edit']);
+Route::get('/add_cares/remove/ask/{id}', [CareController::class, 'removeForm']);
+Route::get('/add_cares/remove/{id}', [CareController::class, 'remove']);
+
 Route::get('/working_days', function () {
     return view('working_days');
 });
