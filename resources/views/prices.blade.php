@@ -57,9 +57,17 @@
                       <div class="prices_card card">
                         <div class="card-body">
                           <h5 style="font-family: Arial Black; font-size: 30px; text-align: center;  margin-top: 30px;" class="card-title">Kaina darbo dienomis</h5>
-                        <div style="font-family: Adobe Garamond Pro Bold; font-size: 30px; text-align: center; margin-top: 30px;">
-                          
-                        </div>
+                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 30px; text-align: center; margin-top: 30px;">
+                            @forelse ($prices as $price)
+                              @if($price->type=="Kaina_darbo_diena")
+                                1 val kaina yra
+                                {{$price->indicated_price}}
+                                eurai.
+                              @endif
+                            @empty
+                              <div>Kainos nenustatytos</div>
+                            @endforelse
+                            </div>
                           <img src="/image/Fotoo6.png" style="margin-top: 20px;" class="prices_foto card-img-top">
                         </div>
                       </div>
@@ -69,8 +77,16 @@
                         <div class="card-body">
                           <h5 style="font-family: Arial Black; font-size: 30px; text-align: center; margin-top: 30px;" class="card-title">Kaina savaitgaliais</h5>
                           <div style="font-family: Adobe Garamond Pro Bold; font-size: 30px; text-align: center; margin-top: 30px;">
-                          
-                          </div>
+                            @forelse ($prices as $price)
+                              @if($price->type=="Kaina_savaitgali")
+                                1 val kaina yra
+                                {{$price->indicated_price}}
+                                eurai.
+                              @endif
+                            @empty
+                              <div>Kainos nenustatytos</div>
+                            @endforelse
+                            </div>
                           <img src="/image/Fotoo10.png" style="margin-top: 40px;" class="prices_foto card-img-top">
                         </div>
                       </div>
@@ -90,10 +106,10 @@
                     @csrf
                   <div class="row">
                   <div class="col">
-                    <input value="{{ old('tipas') }}" type="text" class="form-control" placeholder="Tipas" aria-label="tipas" id="tipas" name="tipas">
+                    <input value="{{ old('type') }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
                   </div>
                   <div class="col">
-                    <input value="{{ old('nurodyta_kaina') }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="nurodyta_kaina" id="nurodyta_kaina" name="nurodyta_kaina">
+                    <input value="{{ old('indicated_price') }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
                   </div>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
                     <button type="submit" class="btn btn-success">Pridėti</button>

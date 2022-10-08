@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PricesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,10 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/prices', function () {
-    return view('prices');
-});
+Route::get('/prices', [PricesController::class, 'viewForm']);
+Route::post('/prices', [PricesController::class, 'store']);
+Route::get('/add_prices', [PricesController::class, 'index']);
+
 Route::get('/cares', function () {
     return view('cares');
 });
