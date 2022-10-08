@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+             body {
+                
+                font-family: 'Roboto', sans-serif;
+                
+            }
+            .spalvaNavbar{
+	        background-image: linear-gradient(to right, #2E8B57, #3CB371);
+            }
+
+            .navbar-brand{color: white!important;}
+            .nav-link{color:white!important;}
+            .nav-link:hover{color:#E0FFFF!important;}
+            .navbar-brand{
+	            font-family: "Dollie Script Personal Use"
+            }
+            .navbar-brand{font-style: italic !important;}
+            .navbar-brand{font-size: 40px !important;}
+            .navbar-toggler{color:white!important;}
+            .navbar-toggler-icon{
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+            .linkai{
+	            font-size: 22px; 
+	            font-family: "Franklin Gothic Demi";
+	            padding-right: .50rem !important;
+            }
+            .welcome_pavadinimas{
+                font-family: Impact; 
+                font-size: 50px; 
+                color:#009e60;
+                margin-top: 50px;
+
+            }
+            .Welcome_tekstas{
+                font-size: 22px; 
+                font-family: Times New Roman;
+            }
+            body{
+	            background-image: url("/image/background.png");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            .footer{
+                background-image: linear-gradient(to right, #2E8B57, #3CB371); 
+                margin-top: 40px;
+            }
+            .karusele_foto{
+                border-radius: 200px 350px; 
+            }
+            .about_pavadinimas{
+                font-family: Impact; 
+                font-size: 50px; 
+                color:#009e60;
+                margin-top: 40px;
+            }
+            .about_tekstas{
+                font-size: 22px; 
+                font-family: 'Roboto', sans-serif;
+            }
+            .about_foto{
+                margin-top: 50px;
+                border-radius: 150px;
+                display: flex;
+            }
+            .prices_foto{
+                border-radius: 150px;
+            }
+            .prices_card{
+                border-radius: 170px; 
+                
+            }
+            .cares_foto{
+                border-radius: 100px;
+            }
+            .cares_card{
+                border-radius: 100px;
+            }
