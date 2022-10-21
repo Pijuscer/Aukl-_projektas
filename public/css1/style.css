@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
              body {
                 
@@ -27,15 +29,26 @@
 	            padding-right: .50rem !important;
             }
             .welcome_pavadinimas{
-                font-family: Impact; 
-                font-size: 50px; 
+                font-family: 'Lobster', cursive; 
+                font-size: 70px; 
                 color:#009e60;
                 margin-top: 50px;
 
             }
             .Welcome_tekstas{
                 font-size: 22px; 
-                font-family: Times New Roman;
+                font-family: 'Pacifico', cursive;
+            }
+            div.transbox{
+                background: rgba(0, 0, 0, 0.096);
+                margin: 30px;
+                border-radius: 150px 150px 100px 100px;
+                
+            }
+            div.transbox p{
+                margin: 40px;
+                color: black;
+                
             }
             body{
 	            background-image: url("/image/background.png");
@@ -50,14 +63,24 @@
                 border-radius: 200px 350px; 
             }
             .about_pavadinimas{
-                font-family: Impact; 
-                font-size: 50px; 
+                font-family: 'Lobster', cursive; 
+                font-size: 60px; 
                 color:#009e60;
                 margin-top: 40px;
             }
             .about_tekstas{
                 font-size: 22px; 
-                font-family: 'Roboto', sans-serif;
+                font-family: 'Pacifico', cursive;
+            }
+            div.transboxabout{
+                background: rgba(0, 0, 0, 0.096);
+                border-radius: 200px 200px 200px 200px;
+            }
+            form.transboxaboutadd{
+                background: rgba(0, 128, 0, 0.24);
+                border-radius: 30px;
+                margin-top: 50px
+                
             }
             .about_foto{
                 margin-top: 50px;
@@ -76,4 +99,40 @@
             }
             .cares_card{
                 border-radius: 100px;
+            }
+            .tr_stilius{
+                background-color: #f0f1ff;
+                text-align: center;
+            }
+            .tr_stilius:hover{
+                background-color: #CD853F;
+            }
+            .table_stilius{
+                border-collapse: collapse;
+                border-radius: 1px 20px;
+                overflow: hidden;
+            }
+            .table1{
+                text-align: center;
+                background-color: #ECDE78;
+            }
+            .add_label_tektas{
+                font-family: 'Courgette', cursive;
+                font-size: 25px;
+            }
+            .add_footer{
+                margin-top: 250px;
+            }
+            div.transboxabout_my{
+                background:rgba(211, 16, 16, 0.123);
+                border-radius: 20px 20px 20px 20px;
+                height: 80px;
+            }
+            div.transboxabout_my p{
+                font-family: 'Courgette', cursive;
+                color: rgba(211, 15, 15, 0.979);
+                font-size: 18px;
+            }
+            .all_footer{
+                margin-top: 400px;
             }

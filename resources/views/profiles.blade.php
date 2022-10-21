@@ -62,53 +62,68 @@
                         </ul>
                       </div>
                     @endif
-                      <form action="/add_dog_care" method="POST" class="row g-3">
+                      <form action="/profiles" method="POST" class="row g-3">
                         @csrf
                         <div class="col-md-6">
-                          <label for="vardas" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
-                          <input value="{{ old('vardas') }}" type="text" class="form-control" id="vardas" name="vardas" placeholder="Įrašykite savo vardą">
+                          <label for="name" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
+                          <input value="{{ old('name') }}" type="text" class="form-control" id="name" name="name" placeholder="Įrašykite savo vardą">
                         </div>
                         <div class="col-md-6">
-                          <label for="pavarde" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
-                          <input value="{{ old('pavarde') }}" type="text" class="form-control" id="pavarde" name="pavarde" placeholder="Įrašykite savo pavardę">
+                          <label for="surname" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
+                          <input value="{{ old('surname') }}" type="text" class="form-control" id="surname" name="surname" placeholder="Įrašykite savo pavardę">
                         </div>
                         <div class="col-md-6">
-                          <label for="telefono_numeris" class="form-label" style="font-family: Impact; font-size: 20px;">Telefono numeris</label>
-                          <input value="{{ old('telefono_numeris') }}" type="text" class="form-control" id="telefono_numeris" name="telefono_numeris" placeholder="Įrašykite savo telefono numerį">
+                          <label for="telephone_number" class="form-label" style="font-family: Impact; font-size: 20px;">Telefono numeris</label>
+                          <input value="{{ old('telephone_number') }}" type="text" class="form-control" id="telephone_number" name="telephone_number" placeholder="Įrašykite savo telefono numerį">
                         </div>
                         <div class="col-md-6">
-                          <label for="adresas" class="form-label" style="font-family: Impact; font-size: 20px;">Adresas</label>
-                          <input value="{{ old('adresas') }}" type="text" class="form-control" id="adresas" name="adresas" placeholder="Įrašykite savo namų adresą">
+                          <label for="address" class="form-label" style="font-family: Impact; font-size: 20px;">Adresas</label>
+                          <input value="{{ old('address') }}" type="text" class="form-control" id="address" name="address" placeholder="Įrašykite savo namų adresą">
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
                             <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
-                            @if (auth()->user()->admin)
-                            <a href="{{ url('/dog_care') }}" class="btn btn-success btn-lg">Profiliai</a>
-                            @endif
-                          </div>
-                        <h3 class="about_pavadinimas my-3 text-center">Vaiko profilio užpildymas</h3>
+                        </div>
+                        <div>
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a href="{{ url('/my_user_profiles') }}" class="btn btn-success btn-lg">Redaguoti mano profili</a>
+                            <a href="{{ url('/all_users_profiles') }}" class="btn btn-success btn-lg">Visi profiliai</a>
+                        </div>
+                      </form>
+                      <h1 class="about_pavadinimas text-center p-4">Jūsų vaiko profilio užpildymas</h1>
+                      @if ($errors->any())
+                      <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                      <form action="/profiles" method="POST" class="row g-3">
+                        @csrf
                         <div class="col-md-6">
-                          <label for="suns_veisle" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko vardas</label>
-                          <input value="{{ old('suns_veisle') }}" type="text" class="form-control" id="suns_veisle" name="suns_veisle" placeholder="Įrašykite vaiko vardą">
+                          <label for="kid_name" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
+                          <input value="{{ old('kid_name') }}" type="text" class="form-control" id="kid_name" name="kid_name" placeholder="Įrašykite savo vardą">
                         </div>
                         <div class="col-md-6">
-                          <label for="suns_amzius" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko pavardė</label>
-                          <input value="{{ old('suns_amzius') }}" type="text" class="form-control" id="suns_amzius" name="suns_amzius" placeholder="Įrašykite vaiko pavardę">
+                          <label for="kid_surname" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
+                          <input value="{{ old('kid_surname') }}" type="text" class="form-control" id="kid_surname" name="kid_surname" placeholder="Įrašykite savo pavardę">
                         </div>
                         <div class="col-md-6">
-                          <label for="suns_svoris" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko gimimo data</label>
-                          <input type="date" id="birthday" class="form-control" name="date">
+                            <label for="date_of_birth" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko gimimo data</label>
+                            <input value="{{ old('date_of_birth') }}" type="date" id="date_of_birth" class="form-control" name="date_of_birth">
                         </div>
                         <div class="col-md-6">
-                          <label for="draugiskas" class="form-label" style="font-family: Impact; font-size: 20px;">Papildoma informacija apie vaiką (ar alergijškas bei kiti dalykai )</label>
-                          <input value="{{ old('draugiskas') }}" type="text" class="form-control" id="draugiskas" name="draugiskas" placeholder="Papildoma svarbi informacija apie vaiką">
+                          <label for="additional_information" class="form-label" style="font-family: Impact; font-size: 20px;">Papildoma svarbi informacija apie savo vaiką</label>
+                          <textarea value="{{ old('additional_information') }}" class="form-control" id="additional_information" name="additional_information" rows="3" placeholder="Įrašykite papildoma informacija apie savo vaika (ko nors alergijiškas/netoleruoja ir t.t.)"></textarea>
                         </div>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
-                          <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
-                          @if (auth()->user()->admin)
-                          <a href="{{ url('/dog_care') }}" class="btn btn-success btn-lg">Profiliai</a>
-                          @endif
+                            <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
                         </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                          <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg">Redaguoti vaiko profili</a>
+                          <a href="{{ url('/all_kids_profiles') }}" class="btn btn-success btn-lg">Visi vaikų profiliai</a>
+                      </div>
                       </form>
                     </div>
                 </div>

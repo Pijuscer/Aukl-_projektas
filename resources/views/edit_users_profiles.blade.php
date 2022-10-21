@@ -60,21 +60,29 @@
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
-                    <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Atgal</a>
+                    <a href="{{ url('/profiles') }}" class="btn btn-success btn-lg">Atgal</a>
                       <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;">Priežiūros kainos redagavimas</h1>
-                      <form action="" method="POST">
+                      <form action="" method="POST" class="row g-3">
                         @csrf
-                      <div class="row">
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->type }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
-                      </div>
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->indicated_price }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
-                      </div>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-success btn-lg">Redaguoti</button>
-                      </div>
-                      </div>
+                        <div class="col-md-6">
+                          <label for="name" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
+                          <input value="{{ $users_profiles->name }}" type="text" class="form-control" id="name" name="name" placeholder="Įrašykite savo vardą">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="surname" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
+                          <input value="{{ $users_profiles->surname }}" type="text" class="form-control" id="surname" name="surname" placeholder="Įrašykite savo pavardę">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="telephone_number" class="form-label" style="font-family: Impact; font-size: 20px;">Telefono numeris</label>
+                          <input value="{{ $users_profiles->telephone_number }}" type="text" class="form-control" id="telephone_number" name="telephone_number" placeholder="Įrašykite savo telefono numerį">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="address" class="form-label" style="font-family: Impact; font-size: 20px;">Adresas</label>
+                          <input value="{{ $users_profiles->address }}" type="text" class="form-control" id="address" name="address" placeholder="Įrašykite savo namų adresą">
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
+                            <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
+                        </div>
                       </form>
                   </div>
               </div>

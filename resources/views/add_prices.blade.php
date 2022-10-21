@@ -26,10 +26,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav navbar-collapse justify-content-end">
-                      <a href="{{ url('/add_dog_care') }}" class="linkai nav-link">Profilis</a>
-                      <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                      <li class="nav-item dropdown">
+                        <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Profilis
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
+                          <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
+                        </ul>
+                      </li>
                       <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                      <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
                       <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                         <div class="dropdown">

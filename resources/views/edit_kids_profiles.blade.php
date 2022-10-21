@@ -62,19 +62,27 @@
                   <div class="col-md-10">
                     <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Atgal</a>
                       <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;">Priežiūros kainos redagavimas</h1>
-                      <form action="" method="POST">
+                      <form action="" method="POST" class="row g-3">
                         @csrf
-                      <div class="row">
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->type }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
-                      </div>
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->indicated_price }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
-                      </div>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-success btn-lg">Redaguoti</button>
-                      </div>
-                      </div>
+                        <div class="col-md-6">
+                            <label for="kid_name" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
+                            <input value="{{ $kids_profiles->kid_name }}" type="text" class="form-control" id="kid_name" name="kid_name" placeholder="Įrašykite savo vardą">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="kid_surname" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
+                            <input value="{{ $kids_profiles->kid_surname }}" type="text" class="form-control" id="kid_surname" name="kid_surname" placeholder="Įrašykite savo pavardę">
+                          </div>
+                          <div class="col-md-6">
+                              <label for="date_of_birth" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko gimimo data</label>
+                              <input value="{{ $kids_profiles->date_of_birth }}" type="date" id="date_of_birth" class="form-control" name="date_of_birth">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="additional_information" class="form-label" style="font-family: Impact; font-size: 20px;">Papildoma svarbi informacija apie savo vaiką</label>
+                            <textarea value="{{ $kids_profiles->additional_information }}" class="form-control" id="additional_information" name="additional_information" rows="3" placeholder="Įrašykite papildoma informacija apie savo vaika (ko nors alergijiškas/netoleruoja ir t.t.)">{{ $kids_profiles->additional_information }}</textarea>
+                          </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
+                            <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
+                        </div>
                       </form>
                   </div>
               </div>

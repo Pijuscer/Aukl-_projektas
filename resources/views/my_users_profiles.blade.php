@@ -57,33 +57,52 @@
         </div>
     </nav>
         <main>
-            <div class="container mt-4">
-                <div class="d-flex justify-content-center">
-                  <div class="col-md-10">
-                    <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Atgal</a>
-                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;">Priežiūros kainos redagavimas</h1>
-                      <form action="" method="POST">
-                        @csrf
-                      <div class="row">
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->type }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
-                      </div>
-                      <div class="col" style="margin-top: 40px;">
-                        <input value="{{ $prices->indicated_price }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
-                      </div>
-                      <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 40px;">
-                        <button type="submit" class="btn btn-success btn-lg">Redaguoti</button>
-                      </div>
-                      </div>
-                      </form>
-                  </div>
-              </div>
+<div class="container mt-4">
+    <div class="col-md-12">
+        <h1 class="about_pavadinimas text-center p-4">Jūsų profilis</h1>
+        <div class="col-lg-6 transboxabout_my" style="float:none;margin:auto; margin-top:50px;">
+          <p class="text-center">Jeigu esate naujas vartotojas ir neužpildėte profili apie save, galite tai atlikti paspaudę mygtuką „Užpildyti profilį“.</p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+          <table class="table table_stilius" style="margin-top: 50px; ">
+            <thead class="table1">
+              <tr>
+                <th scope="col">Vardas</th>
+                <th scope="col">Pavardė</th>
+                <th scope="col">Telefono numeris</th>
+                <th scope="col">Adresas</th>
+                <th scope="col"></th>
+                <th scope="col">Redaguoti</th>
+              </tr>
+            </thead>
+        <tbody>
+          @foreach ( $users_profiles as $users_profiles2)
+          <tr class="tr_stilius">
+              <td>{{$users_profiles2->name }}</td>
+              <td>{{$users_profiles2->surname }}</td>
+              <td>{{$users_profiles2->telephone_number}}</td>
+              <td>{{$users_profiles2->address }}</td>
+              <td>{{ Str::limit($users_profiles2->description, 50) }}</td>
+              <td>
+                <a class='no-underline btn btn-info btn-sm' href="/edit_users_profiles/edit/{{$users_profiles2->id }}">Redaguoti</a>
+              </td>
+          </tr>
+            @endforeach
+        </tbody>
+        </table>
           </div>
-      </main>
-        </main>
-    <footer>
-        <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </body>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
+            <a href="{{ url('/add_user_profile') }}" class="btn btn-success btn-lg">Užpildyti profilį</a>
+            <a href="{{ url('/all_users_profiles') }}" class="btn btn-success btn-lg">Visi profiliai</a>
+          </div>
+      </div>
+  </div>
+</div>
+</main>
+<footer>
+<div class="footer text-center p-3 add_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
 </html>

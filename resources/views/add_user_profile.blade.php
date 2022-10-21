@@ -58,49 +58,47 @@
         </nav>
         <main>
             <div class="container mt-4">
-                <a href="{{ url('/cares') }}" class="btn btn-success btn-lg">Atgal</a>
-                <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0;">Paslaugos</h1>
-                <table class="table table-success table-striped">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Užsiėmimas</th>
-                        <th scope="col">Prižiūrėjimas</th>
-                        <th scope="col"></th>
-                                    <th scope="col"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                      <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                      <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                                    </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-                                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-                                    </svg></th>
-                                  </tr>
-                      </tr>
-                    </thead>
-                <tbody>
-                @foreach ($cares as $cares2)
-                    <tr>
-                        <th scope="row">{{ $cares2->id }}</th>
-                        <td>{{$cares2->take_of_care }}</td>
-                        <td>{{$cares2->when }}</td>
-                        <td>{{ Str::limit($cares2->description, 50) }}</td>
-                        <td>
-                            <a class='no-underline' href="/add_cares/edit/{{$cares2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
-                                <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
-                              </svg></a>
-                            <a class='no-underline' href="/add_cares/remove/{{$cares2->id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                              </svg></a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
+                <div class="d-flex justify-content-center">
+                  <div class="col-md-10">
+                      <h1 class="about_pavadinimas text-center p-4">Jūsų profilio užpildymas</h1>
+                      @if ($errors->any())
+                      <div class="alert alert-danger">
+                        <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                        </ul>
+                      </div>
+                    @endif
+                      <form action="/add_user_profile" method="POST" class="row g-3 transboxaboutadd">
+                        @csrf
+                        <div class="col-md-6">
+                          <label for="name" class="form-label add_label_tektas">Vardas</label>
+                          <input value="{{ old('name') }}" type="text" class="form-control" id="name" name="name" placeholder="Įrašykite savo vardą">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="surname" class="form-label add_label_tektas">Pavardė</label>
+                          <input value="{{ old('surname') }}" type="text" class="form-control" id="surname" name="surname" placeholder="Įrašykite savo pavardę">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="telephone_number" class="form-label add_label_tektas">Telefono numeris</label>
+                          <input value="{{ old('telephone_number') }}" type="text" class="form-control" id="telephone_number" name="telephone_number" placeholder="Įrašykite savo telefono numerį">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="address" class="form-label add_label_tektas">Adresas</label>
+                          <input value="{{ old('address') }}" type="text" class="form-control" id="address" name="address" placeholder="Įrašykite savo namų adresą">
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
+                            <button type="submit" class="btn btn-success btn-lg">Išsaugoti</button>
+                        </div>
+                        <div>
+                      </form>
+                    </div>
+                </div>
             </div>
         </main>
     <footer>
-        <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="footer text-center p-3 add_footer">© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

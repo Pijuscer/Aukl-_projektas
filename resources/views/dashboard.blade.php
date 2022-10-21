@@ -24,9 +24,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav navbar-collapse justify-content-end">
-                      <a href="{{ url('/profiles') }}" class="linkai nav-link">Profilis</a>
+                      <li class="nav-item dropdown">
+                        <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Profilis
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
+                          <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
+                        </ul>
+                      </li>
                       <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                      <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
                       <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                         <div class="dropdown">
@@ -69,7 +78,7 @@
                 </button>
               </div>
             <div class="d-flex justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-10 transbox">
                 <h1 class="welcome_pavadinimas text-center p-4" >Auklė Kaune!</h1>
                 <p class="Welcome_tekstas">Sveiki, esu Pijus Černiauskas šio puslapio įkūrėjas bei asmuo, kuris prižiūrės Jūsų vaiką. Turiu daugiau nei 7 metų patirties šiame darbe. Todėl galiu Jums pasiūlyti patikimą bei atsakingą vaiko priežiūrą. Gyvenu didelėje teritoryje esančiame name, kuriame vaikas turės daug laisvės bei įvairiausių pramogų ne tik namo viduje, bet ir lauke. Jums pažadu savo kaip žmogaus sąžiningumą, nuoširdumą bei rūpestingumą Jūsų vaiko priežiūrai.</p>
             </div>

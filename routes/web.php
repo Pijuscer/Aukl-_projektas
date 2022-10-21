@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PricesController;
 use App\Http\Controllers\CareController;
+use App\Http\Controllers\UsersProfileController;
+use App\Http\Controllers\KidsProfileController;
 use App\Http\Controllers\Controller;
 
 /*
@@ -39,12 +41,24 @@ Route::post('/add_cares/edit/{id}', [CareController::class, 'edit']);
 Route::get('/add_cares/remove/ask/{id}', [CareController::class, 'removeForm']);
 Route::get('/add_cares/remove/{id}', [CareController::class, 'remove']);
 
+Route::get('/add_user_profile', [UsersProfileController::class, 'viewForm']);
+Route::post('/add_user_profile', [UsersProfileController::class, 'store']);
+Route::get('/all_users_profiles', [UsersProfileController::class, 'index']);
+Route::get('/my_user_profile', [UsersProfileController::class, 'index2']);
+Route::get('/edit_users_profiles/edit/{id}', [UsersProfileController::class, 'editForm']);
+Route::post('/edit_users_profiles/edit/{id}', [UsersProfileController::class, 'edit']);
+
+Route::get('/add_kids_profiles', [KidsProfileController::class, 'viewForm']);
+Route::post('/add_kids_profiles', [KidsProfileController::class, 'store']);
+Route::get('/all_kids_profiles', [KidsProfileController::class, 'index']);
+Route::get('/my_kid_profiles', [KidsProfileController::class, 'index3']);
+Route::get('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'editForm']);
+Route::post('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'edit']);
+
 Route::get('/working_days', function () {
     return view('working_days');
 });
-Route::get('/profiles', function () {
-    return view('profiles');
-});
+
 
 
 
