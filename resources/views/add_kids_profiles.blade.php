@@ -60,6 +60,7 @@
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
+                    <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg">Atgal</a>
                     <h1 class="about_pavadinimas text-center p-4">Jūsų vaiko profilio užpildymas</h1>
                     @if ($errors->any())
                     <div class="alert alert-danger">

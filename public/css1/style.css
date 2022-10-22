@@ -93,6 +93,7 @@
             .prices_card{
                 border-radius: 170px; 
                 
+                
             }
             .cares_foto{
                 border-radius: 100px;
@@ -135,4 +136,27 @@
             }
             .all_footer{
                 margin-top: 400px;
+            }
+            .prices{
+                font-family: 'Pacifico', cursive;
+                color:#009e60;
+                font-size: 40px;
+                text-align: center;
+                margin-top: 30px;
+            }
+            .prices_tekstas{
+                font-family: 'Courgette', cursive;
+                font-size: 35px; 
+                text-align: center; 
+                margin-top: 30px;
+            }
+            .card_border_style{
+                border-style: dashed; 
+                border-radius: 160px;
+                color: #778899;
+            }
+            .card_border_style2{
+                border-style: dashed; 
+                border-radius: 100px;
+                color: #778899;
             }

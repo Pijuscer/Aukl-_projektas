@@ -63,9 +63,9 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center;  margin-top: 30px;" class="card-title">Užsiėmimas darbo dienomis</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
+                        <div class="card-body card_border_style2">
+                          <h5 class="prices card-title">Užsiėmimas darbo dienomis</h5>
+                          <div class="prices_tekstas">
                             @forelse ($cares as $care)
                             @if($care->when=="Darbo diena")
                               {{$care->take_of_care}}<br/>
@@ -80,9 +80,9 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="cares_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center; margin-top: 30px;" class="card-title">Užsiėmimas savaitgaliais</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 20px; margin-top: 30px;">
+                        <div class="card-body card_border_style2">
+                          <h5 class="prices card-title">Užsiėmimas savaitgaliais</h5>
+                          <div class="prices_tekstas">
                             @forelse ($cares as $care)
                             @if($care->when=="Savaitgali")
                               {{$care->take_of_care}}<br/>

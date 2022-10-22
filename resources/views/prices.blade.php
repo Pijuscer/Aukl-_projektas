@@ -63,14 +63,14 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="prices_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center;  margin-top: 30px;" class="card-title">Kaina darbo dienomis</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 30px; text-align: center; margin-top: 30px;">
+                        <div class="card-body card_border_style">
+                          <h5 class="prices card-title">Kaina darbo dienomis</h5>
+                          <div class="prices_tekstas">
                             @forelse ($prices as $price)
-                              @if($price->type=="Kaina_darbo_diena")
-                                1 val kaina yra
+                              @if($price->type=="Kaina darbo diena")
+                                1 valandos kaina yra
                                 {{$price->indicated_price}}
-                                eurai.
+                                eurai
                               @endif
                             @empty
                               <div>Kainos nenustatytos</div>
@@ -82,14 +82,14 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="prices_card card">
-                        <div class="card-body">
-                          <h5 style="font-family: Arial Black; font-size: 30px; text-align: center; margin-top: 30px;" class="card-title">Kaina savaitgaliais</h5>
-                          <div style="font-family: Adobe Garamond Pro Bold; font-size: 30px; text-align: center; margin-top: 30px;">
+                        <div class="card-body card_border_style">
+                          <h5 class="prices card-title">Kaina savaitgaliais</h5>
+                          <div class="prices_tekstas">
                             @forelse ($prices as $price)
-                              @if($price->type=="Kaina_savaitgali")
-                                1 val kaina yra
+                              @if($price->type=="Kaina savaitgali")
+                                1 valandos kaina yra
                                 {{$price->indicated_price}}
-                                eurai.
+                                eurai
                               @endif
                             @empty
                               <div>Kainos nenustatytos</div>

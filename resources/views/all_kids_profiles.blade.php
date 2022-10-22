@@ -58,7 +58,7 @@
         </nav>
         <main>
             <div class="container mt-4">
-                <a href="{{ url('/my_kid_profile') }}" class="btn btn-success btn-lg">Atgal</a>
+                <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg">Atgal</a>
                 <h1 class="about_pavadinimas text-center p-4">Visi vartotojų vaikų profiliai</h1>
                 <div class="row justify-content-center">
                 <div class="col-lg-10 ">

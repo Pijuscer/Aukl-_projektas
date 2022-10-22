@@ -79,6 +79,8 @@
               </thead>
           <tbody>
             @foreach ( $kids_profiles as  $kids_profiles2)
+            @isset($users_profiles)
+            @if($kids_profiles2->user_profile_id==$users_profiles->id)
             <tr class="tr_stilius">
                 <td>{{$kids_profiles2->kid_name }}</td>
                 <td>{{$kids_profiles2->kid_surname }}</td>
@@ -89,6 +91,8 @@
                   <a class='no-underline btn btn-info btn-sm' href="/edit_kids_profiles/edit_kid/{{$kids_profiles2->id }}">Redaguoti</a>
                 </td>
             </tr>
+            @endif
+            @endisset
               @endforeach
           </tbody>
           </table>

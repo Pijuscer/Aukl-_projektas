@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\kids_profile;
+use App\Models\User;
 use App\Models\Users_profile;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,14 @@ class KidsProfileController extends Controller
         
     }
     public function index3(){
+        
         $kids_profiles = kids_profile::all();
-        return view('my_kids_profiles', compact('kids_profiles'));
+        $users_profiles = Users_profile::where("user_id", auth()->user()->id)->first();
+        if(!$users_profiles){
+            
+            return view('my_kids_profiles', compact('kids_profiles'));
+        }
+        return view('my_kids_profiles', compact('kids_profiles',"users_profiles"));
         
     }
     

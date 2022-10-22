@@ -77,7 +77,8 @@
               </tr>
             </thead>
         <tbody>
-          @foreach ( $users_profiles as $users_profiles2)
+          @foreach ( $users_profiles as $users_profiles2) 
+          @if($users_profiles2->user_id==\Auth::user()->id)
           <tr class="tr_stilius">
               <td>{{$users_profiles2->name }}</td>
               <td>{{$users_profiles2->surname }}</td>
@@ -88,13 +89,16 @@
                 <a class='no-underline btn btn-info btn-sm' href="/edit_users_profiles/edit/{{$users_profiles2->id }}">Redaguoti</a>
               </td>
           </tr>
+          @endif
             @endforeach
         </tbody>
         </table>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
             <a href="{{ url('/add_user_profile') }}" class="btn btn-success btn-lg">Užpildyti profilį</a>
+            @if (auth()->user()->roles==2 || auth()->user()->roles==1)
             <a href="{{ url('/all_users_profiles') }}" class="btn btn-success btn-lg">Visi profiliai</a>
+            @endif
           </div>
       </div>
   </div>
