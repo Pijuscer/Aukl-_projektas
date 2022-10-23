@@ -61,8 +61,8 @@
         </nav>
         <main>
             <div class="container mt-4">
-                <a href="{{ url('/my_user_profile') }}" class="btn btn-success btn-lg atgal">Atgal</a>
-                <h1 class="about_pavadinimas text-center p-4">Visi vartotojų profiliai</h1>
+                <a href="{{ url('/working_days') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+                <h1 class="about_pavadinimas text-center p-4">Visas laisvumas</h1>
                 <div class="row justify-content-center" style="margin-top: 40px;">
                     <div class="col-lg-4 ">
                     <form action="/order_care/search2" method="get">
@@ -74,35 +74,37 @@
                     </div>
                     </div>
                 <div class="row justify-content-center">
-                <div class="col-lg-8 ">
+                <div class="col-lg-6 ">
                 <table class="table table_stilius" style="margin-top: 50px;">
                     <thead class="table1">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User_id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Telephone number</th>
-                        <th scope="col">Address</th>
+                        <th scope="col">Data</th>
+                        <th scope="col">Laikas</th>
                         <th scope="col"></th>
+                        <th scope="col">Redaguoti</th>
+                        <th scope="col">Ištrinti</th>
                       </tr>
                     </thead>
                 <tbody>
-                @foreach ( $users_profiles as  $users_profiles2)
+                @foreach ( $freedoms as  $freedoms2)
                     <tr class="tr_stilius">
-                        <th scope="row">{{  $users_profiles2->id }}</th>
-                        <td>{{$users_profiles2->user_id }}</td>
-                        <td>{{$users_profiles2->name }}</td>
-                        <td>{{$users_profiles2->surname }}</td>
-                        <td>{{$users_profiles2->telephone_number}}</td>
-                        <td>{{$users_profiles2->address }}</td>
-                        <td>{{ Str::limit($users_profiles2->description, 50) }}</td>
+                        <th scope="row">{{  $freedoms2->id }}</th>
+                        <td>{{$freedoms2->date}}</td>
+                        <td>{{$freedoms2->time }}</td>
+                        <td>{{ Str::limit($freedoms2->description, 50) }}</td>
+                        <td>
+                            <a class='no-underline btn btn-warning btn-sm' href="/edit_working_days/edit/{{$freedoms2->id }}">Redaguoti</a>
+                          </td>
+                          <td>
+                            <a class='no-underline btn btn-danger btn-sm' href="/all_working_days/remove/{{$freedoms2->id }}">Ištrinti</a>
+                          </td>
                     </tr>
                     @endforeach
                 </tbody>
                 </table>
                 </div>
-                </div>
+            </div>
             </div>
         </main>
     <footer>

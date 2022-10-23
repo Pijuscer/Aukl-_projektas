@@ -37,8 +37,11 @@
                   </li>
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -109,10 +112,11 @@
                       </ul>
                     </div>
                   @endif
-                 
-                  <form action="prices" method="POST" style="margin-top: 70px;">
+                  @if (auth()->user()->roles==2)
+                  <form action="prices" method="POST" style="margin-top: 50px;">
                     @csrf
                   <div class="row">
+                    <h1 class="about_pavadinimas text-center p-4">Kainų pridėjimas</h1>
                   <div class="col">
                     <input value="{{ old('type') }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
                   </div>
@@ -120,12 +124,12 @@
                     <input value="{{ old('indicated_price') }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
                   </div>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-success">Pridėti</button>
-                    <a href="{{ url('/add_prices') }}" class="btn btn-success">Redaguoti</a>
+                    <button type="submit" class="btn btn-success btn-lg">Pridėti</button>
+                    <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Redaguoti</a>
                   </div>
                   </div>
                   </form>
-                 
+                  @endif
               </div>
           </div>
       </div>

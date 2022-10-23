@@ -37,8 +37,11 @@
                   </li>
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,18 +63,20 @@
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
-                    <a href="{{ url('/add_cares') }}" class="btn btn-success btn-lg">Atgal</a>
-                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;"">Šunų paslaugų redagavimas</h1>
-                      <form action="" method="POST">
+                    <a href="{{ url('/add_cares') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+                      <h1 class="text-center p-4 about_pavadinimas">Šunų paslaugų redagavimas</h1>
+                      <form action="" class="row g-3 transboxaboutadd" method="POST">
                         @csrf
                         <div class="row">
                           <div class="col" style="margin-top: 40px;">
+                            <label for="take_of_care" class="form-label add_label_tektas">Užsiėmimas</label>
                             <input value="{{ $cares->take_of_care }}" type="text" class="form-control" placeholder="Užsiėmimas" aria-label="take_of_care" id="take_of_care" name="take_of_care">
                           </div>
                           <div class="col" style="margin-top: 40px;">
+                            <label for="when" class="form-label add_label_tektas">Prižiūrėjimas</label>
                             <input value="{{ $cares->when }}" type="text" class="form-control" placeholder="Prižiūrėjimas" aria-label="when" id="when" name="when">
                           </div>
-                          <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 40px;">
+                          <div class="d-grid gap-2 d-md-flex justify-content-md-end" style=" margin-top: 60px; margin-bottom:40px;" >
                             <button type="submit" class="btn btn-success btn-lg">Redaguoti</button>
                           </div>
                           </div>
@@ -82,7 +87,7 @@
       </main>
         </main>
     <footer>
-        <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="footer text-center p-3 edit_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

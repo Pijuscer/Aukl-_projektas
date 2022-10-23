@@ -37,8 +37,11 @@
                   </li>
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,28 +63,28 @@
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
-                    <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Atgal</a>
-                      <h1 class="text-center p-4" style="font-family: Impact; font-size: 50px; color:#5F9EA0; margin-top: 40px;">Priežiūros kainos redagavimas</h1>
-                      <form action="" method="POST" class="row g-3">
+                    <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+                      <h1 class="text-center p-4 about_pavadinimas">Vartotojo vaiko profilio redagavimas</h1>
+                      <form action="" method="POST" class="row g-3 transboxaboutadd">
                         @csrf
                         <div class="col-md-6">
-                            <label for="kid_name" class="form-label" style="font-family: Impact; font-size: 20px;">Vardas</label>
+                            <label for="kid_name" class="form-label add_label_tektas">Vardas</label>
                             <input value="{{ $kids_profiles->kid_name }}" type="text" class="form-control" id="kid_name" name="kid_name" placeholder="Įrašykite savo vardą">
                           </div>
                           <div class="col-md-6">
-                            <label for="kid_surname" class="form-label" style="font-family: Impact; font-size: 20px;">Pavardė</label>
+                            <label for="kid_surname" class="form-label add_label_tektas">Pavardė</label>
                             <input value="{{ $kids_profiles->kid_surname }}" type="text" class="form-control" id="kid_surname" name="kid_surname" placeholder="Įrašykite savo pavardę">
                           </div>
                           <div class="col-md-6">
-                              <label for="date_of_birth" class="form-label" style="font-family: Impact; font-size: 20px;">Vaiko gimimo data</label>
+                              <label for="date_of_birth" class="form-label add_label_tektas">Vaiko gimimo data</label>
                               <input value="{{ $kids_profiles->date_of_birth }}" type="date" id="date_of_birth" class="form-control" name="date_of_birth">
                           </div>
                           <div class="col-md-6">
-                            <label for="additional_information" class="form-label" style="font-family: Impact; font-size: 20px;">Papildoma svarbi informacija apie savo vaiką</label>
+                            <label for="additional_information" class="form-label add_label_tektas">Papildoma svarbi informacija apie savo vaiką</label>
                             <textarea value="{{ $kids_profiles->additional_information }}" class="form-control" id="additional_information" name="additional_information" rows="3" placeholder="Įrašykite papildoma informacija apie savo vaika (ko nors alergijiškas/netoleruoja ir t.t.)">{{ $kids_profiles->additional_information }}</textarea>
                           </div>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
-                            <button type="submit" class="btn btn-outline-success btn-lg">Išsaugoti</button>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style=" margin-top: 60px; margin-bottom:40px;">
+                            <button type="submit" class="btn btn-success btn-lg">Išsaugoti</button>
                         </div>
                       </form>
                   </div>
@@ -90,7 +93,7 @@
       </main>
         </main>
     <footer>
-        <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="footer text-center p-3 edit_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

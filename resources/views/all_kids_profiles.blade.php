@@ -37,8 +37,11 @@
                       </li>
                       <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                      @if (auth()->user()->roles==2)
+                      <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                      @else
+                      @endif
+                      <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                       <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -58,8 +61,18 @@
         </nav>
         <main>
             <div class="container mt-4">
-                <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg">Atgal</a>
+                <a href="{{ url('/my_kid_profiles') }}" class="btn btn-success btn-lg atgal">Atgal</a>
                 <h1 class="about_pavadinimas text-center p-4">Visi vartotojų vaikų profiliai</h1>
+                <div class="row justify-content-center" style="margin-top: 40px;">
+                    <div class="col-lg-4 ">
+                    <form action="/order_care/search2" method="get">
+                        <input class="searchTerm" type="text" placeholder="Paieška.." name="query">
+                        <button class="btn btn-info" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                          </svg></button>
+                    </form>
+                    </div>
+                    </div>
                 <div class="row justify-content-center">
                 <div class="col-lg-10 ">
                 <table class="table table_stilius" style="margin-top: 50px;">

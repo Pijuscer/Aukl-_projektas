@@ -37,8 +37,11 @@
                   </li>
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,12 +103,15 @@
             <a href="{{ url('/all_users_profiles') }}" class="btn btn-success btn-lg">Visi profiliai</a>
             @endif
           </div>
+        <div class="col-lg-6">
+          <img src="/image/Foto10.png" class="center my_foto  card-img-top">
+        </div>
       </div>
   </div>
 </div>
 </main>
 <footer>
-<div class="footer text-center p-3 add_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>
+<div class="footer text-center p-3 my_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

@@ -18,36 +18,47 @@
         
     </head>
     <body class="antialiased">
-        <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
-            <div class="container-fluid">
-                <a href="{{ url('/dashboard') }}" class="navbar-brand font-italic">Auklė Kaune</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav navbar-collapse justify-content-end">
-                      <a href="{{ url('/add_dog_care') }}" class="linkai nav-link">Profilis</a>
-                      <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
-                      <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
-                      <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
-                              <form method="POST" action="{{ route('logout') }}" x-data>
-                                @csrf
-                                <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
-                            </form>
-                            </ul>
-                          </div> 
-                    </div>
+      <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
+        <div class="container-fluid">
+            <a href="{{ url('/dashboard') }}" class="navbar-brand font-italic">Auklė Kaune</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav navbar-collapse justify-content-end">
+                  <li class="nav-item dropdown">
+                    <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profilis
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
+                      <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
+                    </ul>
+                  </li>
+                  <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
+                  <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                  <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
+                          <form method="POST" action="{{ route('logout') }}" x-data>
+                            @csrf
+                            <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
+                        </form>
+                        </ul>
+                      </div> 
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
         <main>
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
@@ -62,33 +73,24 @@
                           </ul>
                         </div>
                       @endif
-                      <form action="working_days" method="POST" class="row g-3" style="margin-top: 40px;">
+                      <form action="working_days" method="POST" class="row g-3 transboxaboutadd" style="margin-top: 40px;">
                         @csrf
                         <div class="col-md-6">
-                          <label for="diena" class="form-label" style="font-family: Impact; font-size: 20px;">Diena</label>
-                          <input type="date" id="date" class="form-control" name="date">
+                          <label for="date" class="form-label add_label_tektas">Diena</label>
+                          <input value="{{ old('date') }}" type="date" id="date" class="form-control" name="date">
                         </div>
                         <div class="col-md-6">
-                          <label for="laisvumas" class="form-label" style="font-family: Impact; font-size: 20px;">Nurodytos darbo laisvos valandos</label>
-                          <input value="{{ old('laisvumas') }}" type="text" class="form-control" id="laisvumas" name="laisvumas" placeholder="Įrašomas laisvumas valandų">
+                          <label for="time" class="form-label add_label_tektas">Nurodytos darbo laisvos valandos</label>
+                          <input value="{{ old('time') }}" type="text" class="form-control" id="time" name="time" placeholder="Įrašomas laisvumas valandų">
                         </div>
-                        <div class="col-12" style="margin-top: 40px;">
-                          <button type="submit" class="btn btn-outline-success btn-lg">Pridėti</button>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style=" margin-top: 60px; margin-bottom:40px;">
+                          <button type="submit" class="btn btn-success btn-lg">Išsaugoti</button>                 
+                          <a href="{{ url('/all_working_days') }}" class="btn btn-success btn-lg">Visas laisvumas</a>
                         </div>
                       </form>
                       </div>           
                   </div>
-                  <div class="row justify-content-center" style="margin-top: 40px;">
-                    <div class="col-4 ">
-                    <form action="/working_days/search" method="get">
-                        <input class="searchTerm" type="text" placeholder="Paieška.." name="query">
-                        <button class="btn btn-outline-info" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                          </svg></button>
-                    </form>
-                    </div>
-                </div>
-                    </div>
+              </div>
         </main>
     <footer>
         <div class="footer text-center p-3" style="margin-top: 400px;" >© 2022 Darbą atliko Pijus Černiauskas</div>

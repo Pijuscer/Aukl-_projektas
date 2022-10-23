@@ -61,49 +61,28 @@
         </nav>
         <main>
             <div class="container mt-4">
-                <a href="{{ url('/my_user_profile') }}" class="btn btn-success btn-lg atgal">Atgal</a>
-                <h1 class="about_pavadinimas text-center p-4">Visi vartotojų profiliai</h1>
-                <div class="row justify-content-center" style="margin-top: 40px;">
-                    <div class="col-lg-4 ">
-                    <form action="/order_care/search2" method="get">
-                        <input class="searchTerm" type="text" placeholder="Paieška.." name="query">
-                        <button class="btn btn-info" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                          </svg></button>
-                    </form>
-                    </div>
-                    </div>
-                <div class="row justify-content-center">
-                <div class="col-lg-8 ">
-                <table class="table table_stilius" style="margin-top: 50px;">
-                    <thead class="table1">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">User_id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Surname</th>
-                        <th scope="col">Telephone number</th>
-                        <th scope="col">Address</th>
-                        <th scope="col"></th>
-                      </tr>
-                    </thead>
-                <tbody>
-                @foreach ( $users_profiles as  $users_profiles2)
-                    <tr class="tr_stilius">
-                        <th scope="row">{{  $users_profiles2->id }}</th>
-                        <td>{{$users_profiles2->user_id }}</td>
-                        <td>{{$users_profiles2->name }}</td>
-                        <td>{{$users_profiles2->surname }}</td>
-                        <td>{{$users_profiles2->telephone_number}}</td>
-                        <td>{{$users_profiles2->address }}</td>
-                        <td>{{ Str::limit($users_profiles2->description, 50) }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                </table>
-                </div>
-                </div>
-            </div>
+                <div class="d-flex justify-content-center">
+                  <div class="col-md-10">
+                    <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+                      <h1 class="text-center p-4 about_pavadinimas">Laisvumo redagavimas</h1>
+                      <form action="" method="POST" class="row g-3 transboxaboutadd">
+                        @csrf
+                          <div class="col-md-6">
+                              <label for="date" class="form-label add_label_tektas">Data</label>
+                              <input value="{{ $freedoms->date }}" type="date" id="date" class="form-control" name="date">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="time" class="form-label add_label_tektas">Nurodytos darbo laisvos valandos</label>
+                            <input value="{{ $freedoms->time }}" type="text" class="form-control" id="time" name="time" placeholder="Įrašomas laisvumas valandų">
+                          </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end" style=" margin-top: 60px; margin-bottom:40px;">
+                            <button type="submit" class="btn btn-success btn-lg">Išsaugoti</button>
+                        </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </main>
         </main>
     <footer>
         <div class="footer text-center p-3 all_footer" >© 2022 Darbą atliko Pijus Černiauskas</div>

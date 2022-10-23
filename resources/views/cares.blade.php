@@ -37,8 +37,11 @@
                   </li>
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                  @if (auth()->user()->roles==2)
+                  <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
+                  @else
+                  @endif
+                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,10 +108,11 @@
                       </ul>
                     </div>
                   @endif
-                  
-                  <form action="cares" method="POST" style="margin-top: 70px;">
+                  @if (auth()->user()->roles==2)
+                  <form action="cares" method="POST" style="margin-top: 20px;">
                     @csrf
                   <div class="row">
+                    <h1 class="about_pavadinimas text-center p-4">Paslaugų pridėjimas</h1>
                   <div class="col">
                     <input value="{{ old('take_of_care') }}" type="text" class="form-control" placeholder="Užsiėmimas" aria-label="take_of_care" id="take_of_care" name="take_of_care">
                   </div>
@@ -116,13 +120,13 @@
                     <input value="{{ old('when') }}" type="text" class="form-control" placeholder="Prižiūrėjimas" aria-label="when" id="when" name="when">
                   </div>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-success">Pridėti</button>
-                    <a href="{{ url('/add_cares') }}" class="btn btn-success">Redaguoti</a>
+                    <button type="submit" class="btn btn-success btn-lg">Pridėti</button>
+                    <a href="{{ url('/add_cares') }}" class="btn btn-success btn-lg">Redaguoti</a>
                   </div>
                   </form>
-                  
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
-                    <a href="{{ url('/order_care') }}" class="btn btn-success">Užsisakyti</a>
+                  @endif
+                  <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20px;">
+                    <a href="{{ url('/order_cares') }}" class="paslauga_mygtukas">Užsisakyti prižiūrėjimo paslaugą</a>
                   </div>
                   </div>
                   </form>

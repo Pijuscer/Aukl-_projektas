@@ -5,6 +5,8 @@ use App\Http\Controllers\PricesController;
 use App\Http\Controllers\CareController;
 use App\Http\Controllers\UsersProfileController;
 use App\Http\Controllers\KidsProfileController;
+use App\Http\Controllers\FreedomController;
+
 use App\Http\Controllers\Controller;
 
 /*
@@ -55,9 +57,26 @@ Route::get('/my_kid_profiles', [KidsProfileController::class, 'index3']);
 Route::get('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'editForm']);
 Route::post('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'edit']);
 
-Route::get('/working_days', function () {
-    return view('working_days');
+
+Route::get('/working_days', [FreedomController::class, 'viewForm']);
+Route::post('/working_days', [FreedomController::class, 'store']);
+Route::get('/all_working_days', [FreedomController::class, 'index']);
+Route::get('/edit_working_days/edit/{id}', [FreedomController::class, 'editForm']);
+Route::post('/edit_working_days/edit/{id}', [FreedomController::class, 'edit']);
+Route::get('/all_working_days/remove/ask/{id}', [FreedomController::class, 'removeForm']);
+Route::get('/all_working_days/remove/{id}', [FreedomController::class, 'remove']);
+
+Route::get('/reservations', function () {
+    return view('reservations');
 });
+
+Route::get('/order_cares', function () {
+    return view('order_cares');
+});
+
+//Route::get('/working_days', function () {
+    //return view('working_days');
+//});
 
 
 

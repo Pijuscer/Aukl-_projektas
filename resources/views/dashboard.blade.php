@@ -36,10 +36,10 @@
                       <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                       <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
                       @if (auth()->user()->roles==2)
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Laisvumas</a>
+                      <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                       @else
                       @endif
-                      <a href="{{ url('/prices') }}" class="linkai nav-link">Rezervacija</a>
+                      <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
                       <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
