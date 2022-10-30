@@ -5,12 +5,12 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            {{ __('Ačiū, kad užsiregistravote! Prieš pradėdami, ar galėtumėte patvirtinti savo el. pašto adresą spustelėdami nuorodą, kurią ką tik išsiuntėme jums elektroniniu paštu? Jei negavote el. laiško, mielai atsiųsime jums kitą.') }}
         </div>
 
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided in your profile settings.') }}
+                {{ __('Registracijos metu pateiktu el. pašto adresu išsiųsta nauja patvirtinimo nuoroda.') }}
             </div>
         @endif
 
@@ -20,7 +20,7 @@
 
                 <div>
                     <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
+                        {{ __('Siųsti patvirtinimo el. laišką iš naujo') }}
                     </x-jet-button>
                 </div>
             </form>
@@ -36,7 +36,7 @@
                     @csrf
 
                     <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 ml-2">
-                        {{ __('Log Out') }}
+                        {{ __('Atsijungti') }}
                     </button>
                 </form>
             </div>

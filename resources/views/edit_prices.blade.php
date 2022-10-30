@@ -19,7 +19,6 @@
     </head>
     <body class="antialiased">
       <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
-        <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
           <div class="container-fluid">
               <a href="{{ url('/dashboard') }}" class="navbar-brand font-italic">Auklė Kaune</a>
               <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
