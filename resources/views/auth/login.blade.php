@@ -1,4 +1,5 @@
-<x-guest-layout>
+<link rel="stylesheet" type="text/css" href="{{ url('/css1/style.css') }}" />
+<x-guest-layout class="layout">
     <x-jet-authentication-card>
         <x-slot name="logo">
             <h2 id="login-name">Auklė Kaune</h2>

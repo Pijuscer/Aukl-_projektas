@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="{{ url('/css1/style.css') }}" />
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">

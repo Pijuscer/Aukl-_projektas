@@ -112,6 +112,7 @@
                 border-collapse: collapse;
                 border-radius: 1px 20px;
                 overflow: hidden;
+                margin-top: 60px;
             }
             .table1{
                 text-align: center;
@@ -128,6 +129,9 @@
                 background:rgba(211, 16, 16, 0.123);
                 border-radius: 20px 20px 20px 20px;
                 height: 80px;
+                float:none;
+                margin:auto; 
+                margin-top:50px;
             }
             div.transboxabout_my p{
                 font-family: 'Courgette', cursive;
@@ -200,3 +204,47 @@
               .my_footer{
                 margin-top: 100px;
               }
+              .layout{
+                --tw-bg-opacity: 1;
+                background-color: rgb(95 158 160 / var(--tw-bg-opacity))
+              }
+              #login-name{
+                font-size: 60px;
+                font-family: "Dollie Script Personal Use";
+                color:#009e60;
+              }
+              .label_stilius{
+                font-family: "Arial Black";
+                color:#006A4E;
+                font-size: 24px;
+              }
+              .order_stilius{
+                margin-top: 40px;
+              }
+              .paslauga_stilius{
+                margin-top: 40px;
+                margin-bottom: 40px;
+              }
+              .order_cares_footer{
+                margin-top: 100px;
+              }
+              .add_order_care_tektas{
+                font-family: 'Courgette', cursive;
+                font-size: 25px;
+                text-align:center; 
+                display: flex;
+                justify-content: center;
+              }
+             .cares_tekstas{
+                font-family: 'Courgette', cursive;
+                font-size: 25px; 
+                text-align: center; 
+                margin-top: 30px;
+             }
+            .my_user_profiles{
+                margin-top: 60px;
+            }
+            .nav_dropdown{
+                border: none; 
+                background-color: Transparent;
+            }

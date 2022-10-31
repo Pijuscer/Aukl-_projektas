@@ -51,7 +51,7 @@
                               <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                               <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-                                <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
+                                <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
                             </form>
                             </ul>
                           </div> 

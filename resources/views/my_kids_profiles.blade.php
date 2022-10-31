@@ -51,7 +51,7 @@
                           <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                           <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
-                            <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
+                            <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
                         </form>
                         </ul>
                       </div> 
@@ -64,12 +64,12 @@
   <div class="d-flex justify-content-center">
     <div class="col-md-12">
         <h1 class="about_pavadinimas text-center p-4">Jūsų vaikų profilis</h1>
-        <div class="col-lg-6 transboxabout_my" style="float:none;margin:auto; margin-top:50px;">
+        <div class="col-lg-6 transboxabout_my">
         <p class="text-center">Jeigu esate naujas vartotojas ir neužpildėte profili apie savo vaikus, galite tai atlikti paspaudę mygtuką „Užpildyti profilį“.</p>
         </div>
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <table class="table table_stilius" style="margin-top: 60px;">
+            <table class="table table_stilius">
               <thead class="table1">
                 <tr>
                   <th scope="col">Vaiko vardas</th>
@@ -100,7 +100,7 @@
           </tbody>
           </table>
           </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 60px;">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end my_user_profiles">
             <a href="{{ url('/add_kids_profiles') }}" class="btn btn-success btn-lg">Užpildyti profilį</a>
             @if (auth()->user()->roles==2 || auth()->user()->roles==1)
             <a href="{{ url('/all_kids_profiles') }}" class="btn btn-success btn-lg">Visi profiliai</a>

@@ -51,7 +51,7 @@
                               <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                               <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
-                                <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
+                                <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
                             </form>
                             </ul>
                           </div> 
@@ -62,7 +62,7 @@
         <main>
             <div class="container mt-4 transboxabout">
                 <div class="d-flex justify-content-center">
-                  <div class="col-md-10">
+                  <div class="col-md-6">
                     <a href="{{ url('/cares') }}" class="btn btn-success btn-lg atgal">Atgal</a>
                       <h1 class="about_pavadinimas text-center p-4">Paslaugos užsakymas</h1>
                       @if ($errors->any())
@@ -75,10 +75,116 @@
                         </div>
                       @endif
                         <div class="col-md-6" style="float:none;margin:auto;">
-                          <label for="date" class="form-label add_label_tektas" style="text-align:center; display: flex; justify-content: center; ">Dienos</label>
+                          <label for="date" class="form-label add_order_care_tektas">Dienos</label>
                           <input value="" type="date" id="date" class="form-control" name="date">
                         </div>
-                        <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 400px;">
+                        <div class="row row-cols-4 row-cols-lg-4 g-1 g-lg-2 order_stilius">
+                          <div class="col">
+                            <div class="p-3 ">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                8 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  9 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  10 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                11 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  12 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  13 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  14 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  15 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3 ">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  16 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  17 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  18 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  19 val
+                                </label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="p-3">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label label_stilius" for="flexCheckDefault">
+                                  20 val
+                                </label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto paslauga_stilius" >
                             <button type="submit" class="paslauga_mygtukas">Užsisakyti</button>
                         </div>
                       </div>           
@@ -86,7 +192,7 @@
               </div>
         </main>
     <footer>
-        <div class="footer text-center p-3" style="margin-top: 100px;" >© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="footer text-center p-3 order_cares_footer">© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

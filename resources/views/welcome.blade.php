@@ -70,7 +70,7 @@
             <div class="d-flex justify-content-center">
             <div class="col-md-10 transbox">
                 <h1 class="welcome_pavadinimas text-center p-4" >Auklė Kaune!</h1>
-                <p class="Welcome_tekstas">Sveiki, esu Pijus Černiauskas šio puslapio įkūrėjas bei asmuo, kuris prižiūrės Jūsų vaiką. Turiu daugiau nei 7 metų patirties šiame darbe. Todėl galiu Jums pasiūlyti patikimą bei atsakingą vaiko priežiūrą. Gyvenu didelėje teritoryje esančiame name, kuriame vaikas turės daug laisvės bei įvairiausių pramogų ne tik namo viduje, bet ir lauke. Jums pažadu savo kaip žmogaus sąžiningumą, nuoširdumą bei rūpestingumą Jūsų vaiko priežiūrai.</p>
+                <p class="Welcome_tekstas">Sveiki, esu Ieva Ievaitė asmuo, kuri prižiūrės Jūsų vaiką. Turiu daugiau nei 7 metų patirties šiame darbe. Todėl galiu Jums pasiūlyti patikimą bei atsakingą vaiko priežiūrą. Gyvenu didelėje teritoryje esančiame name, kuriame vaikas turės daug laisvės bei įvairiausių pramogų ne tik namo viduje, bet ir lauke. Jums pažadu savo kaip žmogaus sąžiningumą, nuoširdumą bei rūpestingumą Jūsų vaiko priežiūrai.</p>
             </div>
             </div>
         </div>

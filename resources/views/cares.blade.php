@@ -51,7 +51,7 @@
                           <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                           <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
-                            <button type="submit" class="dropdown-item" style="border: none; background-color: Transparent; " >Atsijungti</button>
+                            <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
                         </form>
                         </ul>
                       </div> 
@@ -68,7 +68,7 @@
                       <div class="cares_card card">
                         <div class="card-body card_border_style2">
                           <h5 class="prices card-title">Užsiėmimas darbo dienomis</h5>
-                          <div class="prices_tekstas">
+                          <div class="cares_tekstas">
                             @forelse ($cares as $care)
                             @if($care->when=="Darbo diena")
                               {{$care->take_of_care}}<br/>
@@ -85,7 +85,7 @@
                       <div class="cares_card card">
                         <div class="card-body card_border_style2">
                           <h5 class="prices card-title">Užsiėmimas savaitgaliais</h5>
-                          <div class="prices_tekstas">
+                          <div class="cares_tekstas">
                             @forelse ($cares as $care)
                             @if($care->when=="Savaitgali")
                               {{$care->take_of_care}}<br/>
