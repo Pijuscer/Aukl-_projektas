@@ -74,119 +74,63 @@
                           </ul>
                         </div>
                       @endif
+                      <form  action="/check_time" method="POST">
+                        @csrf
                         <div class="col-md-6" style="float:none;margin:auto;">
+                          @isset($day)
                           <label for="date" class="form-label add_order_care_tektas">Dienos</label>
-                          <input value="" type="date" id="date" class="form-control" name="date">
+                          <input value="{{$day}}" type="date" id="date" class="form-control" name="date">
+                          @endisset
+                         
+                         @empty($day)
+
+                         <label for="date" class="form-label add_order_care_tektas">Dienos</label>
+                         <input value="" type="date" id="date" class="form-control" name="date">
+                          @endempty
                         </div>
-                        <div class="row row-cols-4 row-cols-lg-4 g-1 g-lg-2 order_stilius">
-                          <div class="col">
-                            <div class="p-3 ">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                8 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  9 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  10 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                11 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  12 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  13 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  14 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  15 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3 ">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  16 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  17 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  18 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  19 val
-                                </label>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="p-3">
-                              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label label_stilius" for="flexCheckDefault">
-                                  20 val
-                                </label>
-                            </div>
+                        <div class="d-grid gap-2 col-6 mx-auto paslauga_stilius">
+                          <button type="submit" class="paslauga_mygtukas">Tikrinti</button>
+                        </div>
+                      </form>
+                      <form action="/reservate" method="POST">
+                        @csrf
+                      @isset($hours)
+                      <input type="hidden" value="{{$hours[0]->date}}" name="date">
+                      <div class="row row-cols-4 row-cols-lg-4 g-1 g-lg-2 order_stilius">
+                        @foreach ( $hours as $key=> $hour)
+                        <div class="col">
+                          <div class="p-3 ">
+                            <input class="form-check-input" type="checkbox" name="hours[]" value="{{$hour->time}}" id="flexCheckDefault">
+                              <label class="form-check-label label_stilius" for="flexCheckDefault">
+                              {{$hour->time}} val
+                              </label>
                           </div>
                         </div>
+                          
+                        @endforeach
+                      </div>
+                        @isset($kids)
+                        <div class="row row-cols-1 row-cols-1 lg-1 g-1 g-lg-2 order_stilius">
+                        
+                        @foreach ( $kids as $key=> $kid)
+                        <div class="col">
+                          <div class="p-3 ">
+                            <input class="form-check-input" type="checkbox" name="kid[]" value="{{$kid->id}}" id="flexCheckDefault">
+                              <label class="form-check-label label_stilius" for="flexCheckDefault">
+                              {{$kid->kid_name}} {{$kid->kid_surname}} {{$kid->date_of_birth}} {{$kid->additional_information}}
+                              </label>
+                          </div>
+                        </div>
+                          
+                        @endforeach
+                        </div>
+                        @endisset
+                      
+                      @endisset
                         <div class="d-grid gap-2 col-6 mx-auto paslauga_stilius" >
                             <button type="submit" class="paslauga_mygtukas">Užsisakyti</button>
                         </div>
+                      </form>
                       </div>           
                   </div>
               </div>

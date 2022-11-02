@@ -86,6 +86,19 @@
                         <th scope="col"></th>
                       </tr>
                     </thead>
+                    <tbody>
+                      @isset($reservation)
+                      @foreach ( $reservation as  $reservate)
+                      <tr class="tr_stilius">
+                          <th scope="row">{{  $reservate->id }}</th>
+                          <td>{{$reservate->date }}</td>
+                          <td>{{$reservate->time }}</td>
+                          <td>{{$reservate->user_profile }}</td>
+                          <td>{{$reservate->kid_profile}}</td>
+                      </tr>
+                      @endforeach
+                      @endisset
+                      </tbody>
                 </table>
                 </div>
                 </div>

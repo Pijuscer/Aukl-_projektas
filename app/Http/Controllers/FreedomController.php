@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\freedom;
-
+use App\Models\Kids_profile;
+use App\Models\User;
+use App\Models\Users_profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FreedomController extends Controller
 {
@@ -68,4 +71,14 @@ class FreedomController extends Controller
 
         return redirect('/all_working_days');
     }
+    public function check_time(Request $request){
+
+        $hours=freedom::where("date",$request->date)->get();
+
+        $kids=Kids_profile::where("user_profile_id", Users_profile::where("user_id", Auth::user()->id)->first()->id)->get();
+        
+        $day=$request->date;
+        return view('order_cares',compact("hours", "kids", "day"));
+    }
+
 }

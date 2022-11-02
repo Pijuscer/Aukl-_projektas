@@ -16,8 +16,11 @@ class UsersProfileController extends Controller
         return view('my_users_profiles', compact('users_profiles'));
         
     }
+
     public function viewForm(){
-        //TODO: fentch countries from database
+        if(users_profile::where("user_id", auth()->user()->id)){
+            return redirect()->back();
+        }
         $users_profiles  = users_profile::all();
         return view('add_user_profile', ['add_user_profile' => $users_profiles ]);
 
@@ -25,6 +28,9 @@ class UsersProfileController extends Controller
     public function store(Request $request){
         //dd($request);
         //Validacija
+        if(users_profile::where("user_id", auth()->user()->id)){
+            return redirect()->back();
+        }
         $validated = $request -> validate([
             'user_id',
             'name' => 'required|max:225',

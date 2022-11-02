@@ -6,6 +6,7 @@ use App\Http\Controllers\CareController;
 use App\Http\Controllers\UsersProfileController;
 use App\Http\Controllers\KidsProfileController;
 use App\Http\Controllers\FreedomController;
+use App\Http\Controllers\ReservationController;
 
 use App\Http\Controllers\Controller;
 
@@ -66,13 +67,15 @@ Route::post('/edit_working_days/edit/{id}', [FreedomController::class, 'edit']);
 Route::get('/all_working_days/remove/ask/{id}', [FreedomController::class, 'removeForm']);
 Route::get('/all_working_days/remove/{id}', [FreedomController::class, 'remove']);
 
-Route::get('/reservations', function () {
-    return view('reservations');
-});
 
 Route::get('/order_cares', function () {
     return view('order_cares');
-});
+})->name("choose_time");
+
+Route::post('/check_time', [FreedomController::class, 'check_time'])->name("check_time");
+
+Route::post('/reservate', [ReservationController::class, 'store']);
+Route::get('/reservation', [ReservationController::class, 'index'])->name("reservation");
 
 //Route::get('/working_days', function () {
     //return view('working_days');
