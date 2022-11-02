@@ -64,7 +64,7 @@
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
                     <a href="{{ url('/add_cares') }}" class="btn btn-success btn-lg atgal">Atgal</a>
-                      <h1 class="text-center p-4 about_pavadinimas">Šunų paslaugų redagavimas</h1>
+                      <h1 class="text-center p-4 about_pavadinimas">Paslaugos redagavimas</h1>
                       <form action="" class="row g-3 transboxaboutadd" method="POST">
                         @csrf
                         <div class="row">
