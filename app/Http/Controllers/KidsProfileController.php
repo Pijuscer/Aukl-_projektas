@@ -79,4 +79,14 @@ class KidsProfileController extends Controller
 
         return redirect('/my_kid_profiles');
     }
+    public function search(){
+        $kids_profiles = kids_profile::where('id', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('user_profile_id', $_GET['query'])->
+        orWhere('kid_name', $_GET['query'])->
+        orWhere('kid_surname', $_GET['query'])->
+        orWhere('date_of_birth', $_GET['query'])->
+        orWhere('additional_information', $_GET['query'])->get();
+
+        return view('all_kids_profiles', compact('kids_profiles'));
+    }
 }

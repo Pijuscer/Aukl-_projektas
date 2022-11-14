@@ -50,6 +50,7 @@ Route::get('/all_users_profiles', [UsersProfileController::class, 'index']);
 Route::get('/my_user_profile', [UsersProfileController::class, 'index2']);
 Route::get('/edit_users_profiles/edit/{id}', [UsersProfileController::class, 'editForm']);
 Route::post('/edit_users_profiles/edit/{id}', [UsersProfileController::class, 'edit']);
+Route::get('/all_users_profiles/search', [UsersProfileController::class, 'search']);
 
 Route::get('/add_kids_profiles', [KidsProfileController::class, 'viewForm']);
 Route::post('/add_kids_profiles', [KidsProfileController::class, 'store']);
@@ -57,6 +58,7 @@ Route::get('/all_kids_profiles', [KidsProfileController::class, 'index']);
 Route::get('/my_kid_profiles', [KidsProfileController::class, 'index3']);
 Route::get('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'editForm']);
 Route::post('/edit_kids_profiles/edit_kid/{id}', [KidsProfileController::class, 'edit']);
+Route::get('/all_kids_profiles/search', [KidsProfileController::class, 'search']);
 
 
 Route::get('/working_days', [FreedomController::class, 'viewForm']);
@@ -66,6 +68,7 @@ Route::get('/edit_working_days/edit/{id}', [FreedomController::class, 'editForm'
 Route::post('/edit_working_days/edit/{id}', [FreedomController::class, 'edit']);
 Route::get('/all_working_days/remove/ask/{id}', [FreedomController::class, 'removeForm']);
 Route::get('/all_working_days/remove/{id}', [FreedomController::class, 'remove']);
+Route::get('/all_working_days/search', [FreedomController::class, 'search']);
 
 
 Route::get('/order_cares', function () {
@@ -76,6 +79,7 @@ Route::post('/check_time', [FreedomController::class, 'check_time'])->name("chec
 
 Route::post('/reservate', [ReservationController::class, 'store']);
 Route::get('/reservation', [ReservationController::class, 'index'])->name("reservation");
+Route::get('/reservation/search', [ReservationController::class, 'search']);
 
 //Route::get('/working_days', function () {
     //return view('working_days');

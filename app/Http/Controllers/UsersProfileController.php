@@ -76,4 +76,15 @@ class UsersProfileController extends Controller
 
         return redirect('/my_user_profile');
     }
+    public function search(){
+        $users_profiles = users_profile::where('id', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('user_id', $_GET['query'])->
+        orWhere('name', $_GET['query'])->
+        orWhere('surname', $_GET['query'])->
+        orWhere('telephone_number', $_GET['query'])->
+        orWhere('address', $_GET['query'])->get();
+
+        return view('all_users_profiles', compact('users_profiles'));
+    }
+
 }

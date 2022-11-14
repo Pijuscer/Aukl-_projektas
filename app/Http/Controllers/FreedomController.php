@@ -71,6 +71,13 @@ class FreedomController extends Controller
 
         return redirect('/all_working_days');
     }
+    public function search(){
+        $freedoms = freedom::where('id', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('date', $_GET['query'])->
+        orWhere('time', $_GET['query'])->get();
+
+        return view('all_working_days', compact('freedoms'));
+    }
     public function check_time(Request $request){
 
         $hours=freedom::where("date",$request->date)->get();

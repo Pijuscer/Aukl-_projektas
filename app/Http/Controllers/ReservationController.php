@@ -48,13 +48,21 @@ class ReservationController extends Controller
                         
                     ]);
                 }
-                
-                
+                                
                 Reservation::where("date",$child->date)->where("time",$child->time)->where("kid_profile",$child->kid_profile)->where("id","!=",$child->id)->delete();
                 
             }
         }
         return redirect()->route("reservation");
+    }
+    public function search(){
+        $reservation = Reservation::where('id', 'LIKE', '%' .$_GET['query'].'%')->
+        orWhere('date', $_GET['query'])->
+        orWhere('time', $_GET['query'])->
+        orWhere('kid_profile', $_GET['query'])->
+        orWhere('user_profile', $_GET['query'])->get();
+
+        return view('reservations', compact('reservation'));
     }
 
 }
