@@ -51,7 +51,7 @@ class KidsProfileController extends Controller
             'additional_information' => request('additional_information'),
         ]);
 
-        return redirect('/add_kids_profiles');
+        return redirect('/my_kid_profiles')->with('message_kid_profile_add', 'Sėkmingai pridėjote!');
     }
     public function editForm($id){
         $kids_profiles = kids_profile::where('id', $id)->firstOrFail();
@@ -77,7 +77,7 @@ class KidsProfileController extends Controller
         $kids_profiles->additional_information = request('additional_information');
         $kids_profiles->save();
 
-        return redirect('/my_kid_profiles');
+        return redirect('/my_kid_profiles')->with('message_kid_profile_edit', 'Sėkmingai redagavote!');
     }
     public function search(){
         $kids_profiles = kids_profile::where('id', 'LIKE', '%' .$_GET['query'].'%')->

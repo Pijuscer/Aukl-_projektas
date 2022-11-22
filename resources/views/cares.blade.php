@@ -26,6 +26,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav navbar-collapse justify-content-end">
+                  @if (auth()->user()!= null)
+                  @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
                   <li class="nav-item dropdown">
                     <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Profilis
@@ -35,14 +37,24 @@
                       <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
                     </ul>
                   </li>
+                  @endif
+                  @endif
                   <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
                   <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                  @if (auth()->user()!= null)
+                    
                   @if (auth()->user()->roles==2)
                   <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                   @else
                   @endif
-                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                  @endif
+                  @if (auth()->user()!= null)
+                  @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
+                  <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
+                  @endif
+                  @endif
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
+                  @if (auth()->user()!= null)
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
@@ -55,6 +67,7 @@
                         </form>
                         </ul>
                       </div> 
+                      @endif
                 </div>
             </div>
         </div>
@@ -62,6 +75,15 @@
         <div class="container mt-4">
             <div class="d-flex justify-content-center">
               <div class="col-md-10">
+                @if (session('message'))
+                    <div class="alert alert-success">{{session('message')}}</div>
+                @endif
+                @if (session('message_edit'))
+                  <div class="alert alert-success">{{session('message_edit')}}</div>
+                @endif
+                @if (session('message_delete'))
+                  <div class="alert alert-success">{{session('message_delete')}}</div>
+                @endif
                   <h1 class="about_pavadinimas text-center p-4">Paslaugos</h1>
                   <div class="row">
                     <div class="col-sm-6">
@@ -108,6 +130,7 @@
                       </ul>
                     </div>
                   @endif
+                  @if (auth()->user()!= null)
                   @if (auth()->user()->roles==2)
                   <form action="cares" method="POST" style="margin-top: 20px;">
                     @csrf
@@ -125,9 +148,14 @@
                   </div>
                   </form>
                   @endif
+                  @endif
+                  @if (auth()->user()!= null)
+                  @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
                   <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20px;">
                     <a href="{{ url('/order_cares') }}" class="paslauga_mygtukas">Užsisakyti prižiūrėjimo paslaugą</a>
                   </div>
+                  @endif
+                  @endif
                   </div>
                   </form>
               </div>

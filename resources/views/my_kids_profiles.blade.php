@@ -41,7 +41,7 @@
                   <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                   @else
                   @endif
-                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                  <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,6 +63,12 @@
   <div class="container mt-4">
   <div class="d-flex justify-content-center">
     <div class="col-md-12">
+      @if (session('message_kid_profile_add'))
+        <div class="alert alert-success">{{session('message_kid_profile_add')}}</div>
+      @endif
+      @if (session('message_kid_profile_edit'))
+        <div class="alert alert-success">{{session('message_kid_profile_edit')}}</div>
+      @endif
         <h1 class="about_pavadinimas text-center p-4">Jūsų vaikų profilis</h1>
         <div class="col-lg-6 transboxabout_my">
         <p class="text-center">Jeigu esate naujas vartotojas ir neužpildėte profili apie savo vaikus, galite tai atlikti paspaudę mygtuką „Užpildyti profilį“.</p>

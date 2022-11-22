@@ -41,7 +41,7 @@
                     <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                     @else
                     @endif
-                    <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                    <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
                     <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                       <div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

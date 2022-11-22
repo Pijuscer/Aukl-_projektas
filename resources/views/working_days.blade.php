@@ -41,7 +41,7 @@
                   <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                   @else
                   @endif
-                  <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                  <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
                   <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +63,10 @@
             <div class="container mt-4">
                 <div class="d-flex justify-content-center">
                   <div class="col-md-10">
-                      <h1 class="about_pavadinimas text-center p-4">Laisvumas</h1>
+                    @if (session('message_freedom_add'))
+                      <div class="alert alert-success">{{session('message_freedom_add')}}</div>
+                    @endif
+                    <h1 class="about_pavadinimas text-center p-4">Laisvumas</h1>
                       @if ($errors->any())
                         <div class="alert alert-danger">
                           <ul>

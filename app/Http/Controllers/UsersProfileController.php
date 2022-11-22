@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\users_profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersProfileController extends Controller
 {
@@ -18,8 +19,8 @@ class UsersProfileController extends Controller
     }
 
     public function viewForm(){
-        if(users_profile::where("user_id", auth()->user()->id)){
-            return redirect()->back();
+        if(users_profile::where("user_id", Auth::user()->id)->first()){
+             return redirect()->back();
         }
         $users_profiles  = users_profile::all();
         return view('add_user_profile', ['add_user_profile' => $users_profiles ]);
@@ -28,7 +29,7 @@ class UsersProfileController extends Controller
     public function store(Request $request){
         //dd($request);
         //Validacija
-        if(users_profile::where("user_id", auth()->user()->id)){
+        if(users_profile::where("user_id", auth()->user()->id)->first()){
             return redirect()->back();
         }
         $validated = $request -> validate([
@@ -48,7 +49,7 @@ class UsersProfileController extends Controller
             'address' => request('address'),
         ]);
 
-        return redirect('/add_user_profile');
+        return redirect('/my_user_profile')->with('message_user_profile_add', 'Sėkmingai pridėjote!');
     }
     public function editForm($id){
         $users_profiles = users_profile::where('id', $id)->firstOrFail();
@@ -74,7 +75,7 @@ class UsersProfileController extends Controller
         $users_profiles->address = request('address');
         $users_profiles->save();
 
-        return redirect('/my_user_profile');
+        return redirect('/my_user_profile')->with('message_user_profile_edit', 'Sėkmingai redagavote!');
     }
     public function search(){
         $users_profiles = users_profile::where('id', 'LIKE', '%' .$_GET['query'].'%')->

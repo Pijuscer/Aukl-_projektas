@@ -30,7 +30,7 @@ class PricesController extends Controller
             'indicated_price' => request('indicated_price'),
         ]);
 
-        return redirect('/prices');
+        return redirect('/prices')->with('message_price', 'Sėkmingai pridėjote!');
     }
     public function editForm($id){
         $prices = prices::where('id', $id)->firstOrFail();
@@ -52,7 +52,7 @@ class PricesController extends Controller
         $prices->indicated_price = request('indicated_price');
         $prices->save();
 
-        return redirect('/prices');
+        return redirect('/prices')->with('message_price_edit', 'Sėkmingai redagavote!');
     }
     public function removeForm($id){
         $prices = prices::where('id', $id)->firstOrFail(); 
@@ -63,6 +63,6 @@ class PricesController extends Controller
         $prices = prices::where('id', $id)->firstOrFail();
         $prices->delete();
 
-        return redirect('/prices');
+        return redirect('/prices')->with('message_price_delete', 'Sėkmingai ištrynėte!');
     }
 }

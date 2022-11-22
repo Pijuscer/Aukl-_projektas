@@ -31,7 +31,7 @@ class CareController extends Controller
             'when' => request('when'),
         ]);
 
-        return redirect('/cares');
+        return redirect('/cares')->with('message', 'Sėkmingai pridėjote!');
     }
     public function editForm($id){
         $cares = care::where('id', $id)->firstOrFail();
@@ -53,7 +53,7 @@ class CareController extends Controller
         $cares->when = request('when');
         $cares->save();
 
-        return redirect('/cares');
+        return redirect('/cares')->with('message_edit', 'Sėkmingai redagavote!');
     }
     public function removeForm($id){
         $cares = care::where('id', $id)->firstOrFail(); 
@@ -64,6 +64,6 @@ class CareController extends Controller
         $cares = care::where('id', $id)->firstOrFail();
         $cares->delete();
 
-        return redirect('/cares');
+        return redirect('/cares')->with('message_delete', 'Sėkmingai ištrynėte!');
     }
 }

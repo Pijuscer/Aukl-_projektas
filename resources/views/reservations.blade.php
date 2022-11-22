@@ -41,7 +41,7 @@
                       <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                       @else
                       @endif
-                      <a href="{{ url('/reservations') }}" class="linkai nav-link">Rezervacija</a>
+                      <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
                       <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -62,6 +62,9 @@
         <main>
             <div class="container mt-4">
                 <a href="{{ url('/dashboard') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+                @if (session('message_reservation'))
+                  <div class="alert alert-success">{{session('message_reservation')}}</div>
+                @endif
                 <h1 class="about_pavadinimas text-center p-4">Rezervacijos</h1>
                 <div class="row justify-content-center" style="margin-top: 40px;">
                     <div class="col-lg-4 ">
@@ -96,8 +99,19 @@
                           @endif
                           <td>{{$reservate->date }}</td>
                           <td>{{$reservate->time }}</td>
-                          <td>{{$reservate->user_profile }}</td>
-                          <td>{{$reservate->kid_profile}}</td>
+                          @foreach ( $users as $user)
+                          @if ($user->id == $reservate->user_profile)
+                          <td>{{$user->name }} {{$user->surname}}</td>  
+                          @endif
+                         
+                          @endforeach
+                          @foreach ( $kids as $kid)
+                          @if ($kid->id == $reservate->kid_profile)
+                          <td>{{$kid->kid_name }} {{$kid->kid_surname}}</td>  
+                          @endif
+                         
+                          @endforeach
+                          
                       </tr>
                       @endforeach
                       @endisset

@@ -18,7 +18,7 @@
     <body class="antialiased">
         <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
             <div class="container-fluid">
-                <a href="{{ url('/welcome') }}" class="navbar-brand font-italic">Auklė Kaune</a>
+                <a href="{{ url('') }}" class="navbar-brand font-italic">Auklė Kaune</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
