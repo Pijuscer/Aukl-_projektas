@@ -99,7 +99,7 @@
                               <div>Kainos nenustatytos</div>
                             @endforelse
                             </div>
-                          <img src="/image/Fotoo6.png" style="margin-top: 20px;" class="prices_foto card-img-top">
+                          <img src="/image/Fotoo6.png" class="prices_foto card-img-top">
                         </div>
                       </div>
                     </div>
@@ -118,7 +118,7 @@
                               <div>Kainos nenustatytos</div>
                             @endforelse
                             </div>
-                          <img src="/image/Fotoo10.png" style="margin-top: 40px;" class="prices_foto card-img-top">
+                          <img src="/image/Fotoo10.png" class="prices_foto2 card-img-top">
                         </div>
                       </div>
                     </div>                    
@@ -134,7 +134,7 @@
                   @endif
                   @if (auth()->user()!= null)
                   @if (auth()->user()->roles==2)
-                  <form action="prices" method="POST" style="margin-top: 50px;">
+                  <form action="prices" method="POST" class="paslaugu_pridejimas">
                     @csrf
                   <div class="row">
                     <h1 class="about_pavadinimas text-center p-4">Kainų pridėjimas</h1>
@@ -144,7 +144,7 @@
                   <div class="col">
                     <input value="{{ old('indicated_price') }}" type="text" class="form-control" placeholder="Nurodyta kaina" aria-label="indicated_price" id="indicated_price" name="indicated_price">
                   </div>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 20px;">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end cares_issaugoti">
                     <button type="submit" class="btn btn-success btn-lg">Pridėti</button>
                     <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Redaguoti</a>
                   </div>
@@ -157,7 +157,7 @@
       </div>
   </main>
     <footer>
-        <div class="footer text-center p-3" >© 2022 Darbą atliko Pijus Černiauskas</div>
+        <div class="footer text-center p-3">© 2022 Darbą atliko Pijus Černiauskas</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>

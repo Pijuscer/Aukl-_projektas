@@ -86,9 +86,15 @@
                 margin-top: 50px;
                 border-radius: 150px;
                 display: flex;
+                
             }
             .prices_foto{
                 border-radius: 150px;
+                margin-top: 20px;
+            }
+            .prices_foto2{
+                border-radius: 150px;
+                margin-top: 40px;
             }
             .prices_card{
                 border-radius: 170px; 
@@ -113,6 +119,7 @@
                 border-radius: 1px 20px;
                 overflow: hidden;
                 margin-top: 60px;
+                
             }
             .table1{
                 text-align: center;
@@ -247,4 +254,30 @@
             .nav_dropdown{
                 border: none; 
                 background-color: Transparent;
+            }
+            .button_issaugoti{
+                margin-top: 60px; 
+                margin-bottom:40px;
+            }
+            .paieska{
+                margin-top: 40px;
+            }
+            .paslaugos_foto{
+                margin-top: 40px;
+            }
+            .paslaugu_pridejimas{
+                margin-top: 20px;     
+            }
+            .cares_issaugoti{
+                margin-top: 20px; 
+            }
+            .edit_cares_style{
+                margin-top: 40px;
+            }
+            .order_care_style{
+                float:none;
+                margin:auto;
+            }
+            .working_days_footer{
+                margin-top: 400px;
             }

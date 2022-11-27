@@ -113,7 +113,7 @@
                   <li>Savo rezervacija galite matyti rezervacijos puslapyje.</li>
               </ul>
               <div>
-                <img src="/image/Fotoo4.png" style="margin-top: 50px;" class="center w-50 mx-auto about_foto card-img-top">
+                <img src="/image/Fotoo4.png" class="center w-50 mx-auto about_foto card-img-top">
               </div>  
               </div>
                 </div>
