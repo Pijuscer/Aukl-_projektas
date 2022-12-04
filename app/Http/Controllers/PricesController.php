@@ -12,13 +12,11 @@ class PricesController extends Controller
         return view('add_prices', compact('prices'));
     }
     public function viewForm(){
-        //TODO: fentch countries from database
         $prices = prices::all();
         return view('prices', ['prices' => $prices]);
     }
     public function store(Request $request){
-        //dd($request);
-        //Validacija
+
         $validated = $request -> validate([
             'type' => 'required|max:225',
             'indicated_price' => 'required|max:225|regex:/^[0-9]+$/',
@@ -38,7 +36,6 @@ class PricesController extends Controller
         return view('edit_prices',compact("prices"));
     }
     public function edit(Request $request, $id){
-         //Validacija
 
          $validated = $request -> validate([
             'type' => 'required|max:225',

@@ -46,7 +46,6 @@
                             {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                           <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
                             <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>

@@ -26,14 +26,12 @@ class KidsProfileController extends Controller
     }
     
     public function viewForm(){
-        //TODO: fentch countries from database
         $kids_profiles  = kids_profile::all();
         return view('add_kids_profiles', ['add_kids_profiles' => $kids_profiles ]);
 
     }
     public function store(Request $request){
-        //dd($request);
-        //Validacija
+
         $validated = $request -> validate([
             'user_profile_id',
             'kid_name' => 'required|max:225',
@@ -59,7 +57,6 @@ class KidsProfileController extends Controller
         return view('edit_kids_profiles',compact("kids_profiles"));
     }
     public function edit(Request $request, $id){
-         //Validacija
 
          $validated = $request -> validate([
             'kid_name' => 'required|max:225',

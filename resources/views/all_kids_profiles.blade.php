@@ -46,7 +46,6 @@
                                 {{ Auth::user()->name }}
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="{{ route('profile.show') }}" >Nustatymai</a></li>
                               <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
                                 <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
@@ -72,16 +71,16 @@
                     </div>
                     </div>
                 <div class="row justify-content-center">
-                <div class="col-lg-10 ">
-                <table class="table table_stilius" style="margin-top: 50px;">
+                <div class="col-lg-9 ">
+                <table class="table table_stilius" style="table-layout: fixed;">
                     <thead class="table1">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User_profile_id</th>
-                        <th scope="col">Kid_Name</th>
-                        <th scope="col">Kid_Surname</th>
-                        <th scope="col">Date_of_birth</th>
-                        <th scope="col">Additional_information</th>
+                        <th scope="col" style="word-wrap: break-word">Vartotojo profilis</th>
+                        <th scope="col"style="word-wrap: break-word">Vaiko vardas</th>
+                        <th scope="col"style="word-wrap: break-word">Vaiko pavardė</th>
+                        <th scope="col"style="word-wrap: break-word">Gimimo data</th>
+                        <th scope="col"style="word-wrap: break-word">Papildoma informacija</th>
                         <th scope="col"></th>
                       </tr>
                     </thead>
@@ -89,11 +88,11 @@
                 @foreach ( $kids_profiles as  $kids_profiles2)
                     <tr class="tr_stilius">
                         <th scope="row">{{  $kids_profiles2->id }}</th>
-                        <td>{{$kids_profiles2->user_profile_id }}</td>
-                        <td>{{$kids_profiles2->kid_name }}</td>
-                        <td>{{$kids_profiles2->kid_surname }}</td>
-                        <td>{{$kids_profiles2->date_of_birth}}</td>
-                        <td>{{$kids_profiles2->additional_information }}</td>
+                        <td style="word-wrap: break-word">{{$kids_profiles2->user_profile_id }}</td>
+                        <td style="word-wrap: break-word">{{$kids_profiles2->kid_name }}</td>
+                        <td style="word-wrap: break-word">{{$kids_profiles2->kid_surname }}</td>
+                        <td style="word-wrap: break-word">{{$kids_profiles2->date_of_birth}}</td>
+                        <td style="word-wrap: break-word">{{$kids_profiles2->additional_information }}</td>
                         <td>{{ Str::limit($kids_profiles2->description, 50) }}</td>
                     </tr>
                     @endforeach

@@ -27,8 +27,6 @@ class UsersProfileController extends Controller
 
     }
     public function store(Request $request){
-        //dd($request);
-        //Validacija
         if(users_profile::where("user_id", auth()->user()->id)->first()){
             return redirect()->back();
         }
@@ -57,7 +55,6 @@ class UsersProfileController extends Controller
         return view('edit_users_profiles',compact("users_profiles"));
     }
     public function edit(Request $request, $id){
-         //Validacija
 
          $validated = $request -> validate([
             'name' => 'required|max:225',

@@ -23,11 +23,10 @@ class FreedomController extends Controller
     }
     ///Ikelia dienas ir valandas i duomenu baze
     public function store(Request $request){
-        //dd($request);
-        //Validacija
+
         $validated = $request -> validate([
             'date' => 'required',
-            'time' => 'required',
+            'time' => 'required|max:225|regex:/^[0-9]+$/',
             
         ]);
 

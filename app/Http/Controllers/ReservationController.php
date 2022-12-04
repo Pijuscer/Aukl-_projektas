@@ -8,6 +8,7 @@ use App\Models\Users_profile;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\CssSelector\Node\ElementNode;
 
 class ReservationController extends Controller
 {
@@ -72,11 +73,11 @@ class ReservationController extends Controller
     public function search(){
         $reservation = Reservation::where('id', 'LIKE', '%' .$_GET['query'].'%')->
         orWhere('date', $_GET['query'])->
-        orWhere('time', $_GET['query'])->
-        orWhere('kid_profile', $_GET['query'])->
-        orWhere('user_profile', $_GET['query'])->get();
+        orWhere('time', $_GET['query'])->get();
 
-        return view('reservations', compact('reservation'));
+        $users = Users_profile::all();
+        $kids = Kids_profile::all();
+        return view('reservations', compact('reservation', 'users', 'kids'));
     }
 
 }
