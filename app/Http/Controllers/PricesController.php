@@ -18,7 +18,7 @@ class PricesController extends Controller
     public function store(Request $request){
 
         $validated = $request -> validate([
-            'type' => 'required|max:225',
+            'type' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'indicated_price' => 'required|max:225|regex:/^[0-9]+$/',
 
         ]);
@@ -38,7 +38,7 @@ class PricesController extends Controller
     public function edit(Request $request, $id){
 
          $validated = $request -> validate([
-            'type' => 'required|max:225',
+            'type' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'indicated_price' => 'required|max:225|regex:/^[0-9]+$/',
     
          ]);

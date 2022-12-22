@@ -19,8 +19,8 @@ class CareController extends Controller
     public function store(Request $request){
         
         $validated = $request -> validate([
-            'take_of_care' => 'required|max:225',
-            'when' => 'required|max:225',
+            'take_of_care' => 'required|max:225|',
+            'when' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
 
         ]);
 
@@ -40,7 +40,7 @@ class CareController extends Controller
 
          $validated = $request -> validate([
             'take_of_care' => 'required|max:225',
-            'when' => 'required|max:225',
+            'when' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
     
          ]);
          

@@ -26,16 +26,15 @@ class KidsProfileController extends Controller
     }
     
     public function viewForm(){
-        $kids_profiles  = kids_profile::all();
-        return view('add_kids_profiles', ['add_kids_profiles' => $kids_profiles ]);
+        return view('add_kids_profiles');
 
     }
     public function store(Request $request){
 
         $validated = $request -> validate([
             'user_profile_id',
-            'kid_name' => 'required|max:225',
-            'kid_surname' => 'required|max:225',
+            'kid_name' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
+            'kid_surname' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'date_of_birth' => 'required',
             'additional_information' => 'required|max:225',
 
@@ -59,8 +58,8 @@ class KidsProfileController extends Controller
     public function edit(Request $request, $id){
 
          $validated = $request -> validate([
-            'kid_name' => 'required|max:225',
-            'kid_surname' => 'required|max:225',
+            'kid_name' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
+            'kid_surname' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'date_of_birth' => 'required',
             'additional_information' => 'required|max:225',
     

@@ -12,7 +12,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Vardas') }}" />
+                <x-jet-label for="name" value="{{ __('Vardas/Slapyvardis') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 

@@ -119,6 +119,7 @@
                 border-radius: 1px 20px;
                 overflow: hidden;
                 margin-top: 60px;
+                table-layout: fixed;
                 
             }
             .table1{
@@ -280,4 +281,7 @@
             }
             .working_days_footer{
                 margin-top: 400px;
+            }
+            .th_stilius{
+                word-wrap: break-word;
             }

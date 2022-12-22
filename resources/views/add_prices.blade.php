@@ -66,24 +66,24 @@
                     <thead class="table1">
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Tipas</th>
-                        <th scope="col">Nurodyta kaina</th>
+                        <th scope="col" class="th_stilius">Tipas</th>
+                        <th scope="col" class="th_stilius">Nurodyta kaina</th>
                         <th scope="col"></th>
-                        <th scope="col">Redaguoti</th>
-                        <th scope="col">Ištrinti</th>
+                        <th scope="col" class="th_stilius">Redaguoti</th>
+                        <th scope="col" class="th_stilius">Ištrinti</th>
                       </tr>
                     </thead>
                 <tbody>
                 @foreach ($prices as $prices2)
                     <tr class="tr_stilius">
                         <th scope="row">{{ $prices2->id }}</th>
-                        <td>{{$prices2->type }}</td>
-                        <td>{{$prices2->indicated_price }}</td>
+                        <td class="th_stilius">{{$prices2->type }}</td>
+                        <td class="th_stilius">{{$prices2->indicated_price }}</td>
                         <td>{{ Str::limit($prices2->description, 50) }}</td>
-                        <td>
+                        <td class="th_stilius">
                             <a class='no-underline btn btn-warning btn-sm' href="/add_prices/edit/{{$prices2->id }}">Redaguoti</a>
                         </td>
-                        <td>
+                        <td class="th_stilius">
                           <a class='no-underline btn btn-danger btn-sm' href="/add_prices/remove/{{$prices2->id }}">Ištrinti</a>
                         </td>
                     </tr>

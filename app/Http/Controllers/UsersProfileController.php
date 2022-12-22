@@ -22,8 +22,8 @@ class UsersProfileController extends Controller
         if(users_profile::where("user_id", Auth::user()->id)->first()){
              return redirect()->back();
         }
-        $users_profiles  = users_profile::all();
-        return view('add_user_profile', ['add_user_profile' => $users_profiles ]);
+        
+        return view('add_user_profile');
 
     }
     public function store(Request $request){
@@ -32,8 +32,8 @@ class UsersProfileController extends Controller
         }
         $validated = $request -> validate([
             'user_id',
-            'name' => 'required|max:225',
-            'surname' => 'required|max:225',
+            'name' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
+            'surname' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'telephone_number' => 'required|max:225',
             'address' => 'required|max:225',
 
@@ -57,8 +57,8 @@ class UsersProfileController extends Controller
     public function edit(Request $request, $id){
 
          $validated = $request -> validate([
-            'name' => 'required|max:225',
-            'surname' => 'required|max:225',
+            'name' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
+            'surname' => 'required|max:225|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
             'telephone_number' => 'required|max:225',
             'address' => 'required|max:225',
     
