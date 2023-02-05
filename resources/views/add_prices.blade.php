@@ -16,85 +16,89 @@
         </style>  
     </head>
     <body class="antialiased">
-      <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
-        <div class="container-fluid">
+      <header>
+        <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
+          <div class="container-fluid">
             <a href="{{ url('/dashboard') }}" class="navbar-brand font-italic">Auklė Kaune</a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav navbar-collapse justify-content-end">
-                  <li class="nav-item dropdown">
-                    <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Profilis
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
-                      <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
-                    </ul>
-                  </li>
-                  <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  @if (auth()->user()->roles==2)
+              <div class="navbar-nav navbar-collapse justify-content-end">
+                <li class="nav-item dropdown">
+                  <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profilis
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
+                  </ul>
+                </li>
+                <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
+                <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                @if (auth()->user()->roles==2)
                   <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
                   @else
-                  @endif
-                  <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
-                  <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <form method="POST" action="{{ route('logout') }}" x-data>
-                            @csrf
-                            <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
-                        </form>
-                        </ul>
-                      </div> 
-                </div>
+                @endif
+                <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
+                <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                      @csrf
+                      <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
+                    </form>
+                  </ul>
+                </div> 
+              </div>
             </div>
-        </div>
-    </nav>
-        <main>
-            <div class="container mt-4">
-                <a href="{{ url('/prices') }}" class="btn btn-success btn-lg atgal">Atgal</a>
-                <h1 class="about_pavadinimas text-center p-4">Kainos</h1>
-                <div class="row justify-content-center">
-                  <div class="col-lg-8 ">
-                  <table class="table table_stilius">
-                    <thead class="table1">
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col" class="th_stilius">Tipas</th>
-                        <th scope="col" class="th_stilius">Nurodyta kaina</th>
-                        <th scope="col"></th>
-                        <th scope="col" class="th_stilius">Redaguoti</th>
-                        <th scope="col" class="th_stilius">Ištrinti</th>
-                      </tr>
-                    </thead>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <div class="container mt-4">
+          <a href="{{ url('/prices') }}" class="btn btn-success btn-lg atgal">Atgal</a>
+          <h1 class="about_pavadinimas text-center p-4">Kainos</h1>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 ">
+              <table class="table table_stilius">
+                <thead class="table1">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" class="th_stilius">Tipas</th>
+                    <th scope="col" class="th_stilius">Nurodyta kaina</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="th_stilius">Redaguoti</th>
+                    <th scope="col" class="th_stilius">Ištrinti</th>
+                  </tr>
+                </thead>
                 <tbody>
                 @foreach ($prices as $prices2)
-                    <tr class="tr_stilius">
-                        <th scope="row">{{ $prices2->id }}</th>
-                        <td class="th_stilius">{{$prices2->type }}</td>
-                        <td class="th_stilius">{{$prices2->indicated_price }}</td>
-                        <td>{{ Str::limit($prices2->description, 50) }}</td>
-                        <td class="th_stilius">
-                            <a class='no-underline btn btn-warning btn-sm' href="/add_prices/edit/{{$prices2->id }}">Redaguoti</a>
-                        </td>
-                        <td class="th_stilius">
-                          <a class='no-underline btn btn-danger btn-sm' href="/add_prices/remove/{{$prices2->id }}">Ištrinti</a>
-                        </td>
-                    </tr>
-                    @endforeach
+                  <tr class="tr_stilius">
+                    <th scope="row">{{ $prices2->id }}</th>
+                    <td class="th_stilius">{{$prices2->type }}</td>
+                    <td class="th_stilius">{{$prices2->indicated_price }}</td>
+                    <td>{{ Str::limit($prices2->description, 50) }}</td>
+                    <td class="th_stilius">
+                      <a class='no-underline btn btn-warning btn-sm' href="/add_prices/edit/{{$prices2->id }}">Redaguoti</a>
+                    </td>
+                    <td class="th_stilius">
+                      <a class='no-underline btn btn-danger btn-sm' href="/add_prices/remove/{{$prices2->id }}">Ištrinti</a>
+                    </td>
+                  </tr>
+                @endforeach
                 </tbody>
-                </table>
+              </table>
             </div>
-        </main>
-    <footer>
+          </div>
+        </div>
+      </main>
+      <footer>
         <div class="footer text-center p-3 all_footer">© 2022 Darbą atliko Pijus Černiauskas</div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>

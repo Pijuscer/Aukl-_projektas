@@ -12,127 +12,129 @@
         <link rel="stylesheet" type="text/css" href="{{ url('/css1/style.css') }}" />
     </head>
     <body class="antialiased">
-      <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
-        <div class="container-fluid">
+      <header>
+        <nav class="spalvaNavbar navbar sticky-top navbar-expand-lg ">
+          <div class="container-fluid">
             <a href="{{ url('/dashboard') }}" class="navbar-brand font-italic">Auklė Kaune</a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
+              <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav navbar-collapse justify-content-end">
-                  @if (auth()->user()!= null)
-                  @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
-                  <li class="nav-item dropdown">
-                    <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Profilis
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
-                      <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
-                    </ul>
-                  </li>
-                  @endif
-                  @endif
-                  <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
-                  <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
-                  @if (auth()->user()!= null)
-                    
-                  @if (auth()->user()->roles==2)
+              <div class="navbar-nav navbar-collapse justify-content-end">
+                @if (auth()->user()!= null)
+                @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
+                <li class="nav-item dropdown">
+                  <a class="linkai nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Profilis
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url('/my_user_profile') }}">Mano profilis</a></li>
+                    <li><a class="dropdown-item" href="{{ url('/my_kid_profiles') }}">Vaiko profilis</a></li>
+                  </ul>
+                </li>
+                @endif
+                @endif
+                <a href="{{ url('/cares') }}" class="linkai nav-link">Paslaugos</a>
+                <a href="{{ url('/prices') }}" class="linkai nav-link">Kainos</a>
+                @if (auth()->user()!= null)                 
+                @if (auth()->user()->roles==2)
                   <a href="{{ url('/working_days') }}" class="linkai nav-link">Laisvumas</a>
-                  @else
-                  @endif
-                  @endif
-                  @if (auth()->user()!= null)
-                  @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
+                @else
+                @endif
+                @endif
+                @if (auth()->user()!= null)
+                @if (auth()->user()->roles==2 || auth()->user()->roles==1 || auth()->user()->roles==0)
                   <a href="{{ url('/reservation') }}" class="linkai nav-link">Rezervacija</a>
-                  @endif
-                  @endif
-                  <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
-                  @if (auth()->user()!= null)
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                          <form method="POST" action="{{ route('logout') }}" x-data>
-                            @csrf
-                            <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
-                        </form>
-                        </ul>
-                      </div> 
-                      @endif
-                </div>
+                @endif
+                @endif
+                <a href="{{ url('/about') }}" class="linkai nav-link">Apie</a>
+                @if (auth()->user()!= null)
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                      @csrf
+                      <button type="submit" class="dropdown-item nav_dropdown">Atsijungti</button>
+                    </form>
+                  </ul>
+                </div> 
+                @endif
+              </div>
             </div>
-        </div>
-    </nav>
+          </div>
+        </nav>
+      </header>
+      <main>
         <div class="container mt-4">
           <div class="d-flex justify-content-center">
             <div class="col-md-10">
               @if (session('message_price'))
                 <div class="alert alert-success">{{session('message_price')}}</div>
               @endif
-                @if (session('message_price_edit'))
-                  <div class="alert alert-success">{{session('message_price_edit')}}</div>
-                @endif
-                  @if (session('message_price_delete'))
-                    <div class="alert alert-success">{{session('message_price_delete')}}</div>
-                  @endif
-                  <h1 class="about_pavadinimas text-center p-4">Priežiūros kaina</h1>
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="prices_card card">
-                        <div class="card-body card_border_style">
-                          <h5 class="prices card-title">Kaina darbo dienomis</h5>
-                          <div class="prices_tekstas">
-                            @forelse ($prices as $price)
-                              @if($price->type=="Kaina darbo diena")
-                                1 valandos kaina yra
-                                {{$price->indicated_price}}
-                                eurai
-                              @endif
-                            @empty
-                              <div>Kainos nenustatytos</div>
-                            @endforelse
-                            </div>
-                          <img src="/image/Fotoo6.png" class="prices_foto card-img-top">
-                        </div>
+              @if (session('message_price_edit'))
+                <div class="alert alert-success">{{session('message_price_edit')}}</div>
+              @endif
+              @if (session('message_price_delete'))
+                <div class="alert alert-success">{{session('message_price_delete')}}</div>
+              @endif
+              <h1 class="about_pavadinimas text-center p-4">Priežiūros kaina</h1>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="prices_card card">
+                    <div class="card-body card_border_style">
+                      <h5 class="prices card-title">Kaina darbo dienomis</h5>
+                      <div class="prices_tekstas">
+                        @forelse ($prices as $price)
+                          @if($price->type=="Kaina darbo diena")
+                            1 valandos kaina yra
+                            {{$price->indicated_price}}
+                            eurai
+                          @endif
+                          @empty
+                          <div>Kainos nenustatytos</div>
+                        @endforelse
                       </div>
+                      <img src="/image/Fotoo6.png" class="prices_foto card-img-top">
                     </div>
-                    <div class="col-sm-6">
-                      <div class="prices_card card">
-                        <div class="card-body card_border_style">
-                          <h5 class="prices card-title">Kaina savaitgaliais</h5>
-                          <div class="prices_tekstas">
-                            @forelse ($prices as $price)
-                              @if($price->type=="Kaina savaitgali")
-                                1 valandos kaina yra
-                                {{$price->indicated_price}}
-                                eurai
-                              @endif
-                            @empty
-                              <div>Kainos nenustatytos</div>
-                            @endforelse
-                            </div>
-                          <img src="/image/Fotoo10.png" class="prices_foto2 card-img-top">
-                        </div>
-                      </div>
-                    </div>                    
                   </div>
-                  @if ($errors->any())
-                    <div class="alert alert-danger">
-                      <ul>
-                        @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                        @endforeach
-                      </ul>
+                </div>
+                <div class="col-sm-6">
+                  <div class="prices_card card">
+                    <div class="card-body card_border_style">
+                      <h5 class="prices card-title">Kaina savaitgaliais</h5>
+                      <div class="prices_tekstas">
+                        @forelse ($prices as $price)
+                          @if($price->type=="Kaina savaitgali")
+                            1 valandos kaina yra
+                            {{$price->indicated_price}}
+                            eurai
+                          @endif
+                          @empty
+                          <div>Kainos nenustatytos</div>
+                        @endforelse
+                      </div>
+                      <img src="/image/Fotoo10.png" class="prices_foto2 card-img-top">
                     </div>
-                  @endif
-                  @if (auth()->user()!= null)
-                  @if (auth()->user()->roles==2)
-                  <form action="prices" method="POST" class="paslaugu_pridejimas">
-                    @csrf
-                  <div class="row">
-                    <h1 class="about_pavadinimas text-center p-4">Kainų pridėjimas</h1>
+                  </div>
+                </div>                    
+              </div>
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+              @if (auth()->user()!= null)
+              @if (auth()->user()->roles==2)
+              <form action="prices" method="POST" class="paslaugu_pridejimas">
+                @csrf
+                <div class="row">
+                  <h1 class="about_pavadinimas text-center p-4">Kainų pridėjimas</h1>
                   <div class="col">
                     <input value="{{ old('type') }}" type="text" class="form-control" placeholder="Tipas" aria-label="type" id="type" name="type">
                   </div>
@@ -143,17 +145,17 @@
                     <button type="submit" class="btn btn-success btn-lg">Pridėti</button>
                     <a href="{{ url('/add_prices') }}" class="btn btn-success btn-lg">Redaguoti</a>
                   </div>
-                  </div>
-                  </form>
-                  @endif
-                  @endif
-              </div>
+                </div>
+              </form>
+              @endif
+              @endif
+            </div>
           </div>
-      </div>
-  </main>
-    <footer>
+        </div>
+      </main>
+      <footer>
         <div class="footer text-center p-3">© 2022 Darbą atliko Pijus Černiauskas</div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      </footer>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>
