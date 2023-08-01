@@ -5,15 +5,13 @@ Nanny in Kaunas website where users can reservation their time after registering
 * A stylish design of the app has been created.
 * Created user registration and login system using Laravel Jetstream.
 * Validation done in the required places.
+* A search system has been created.
 * Admin has access to the entire system.
-* Admin can add, edit and delete maintenance hourly price.
-* Admin can add, edit and delete care features.
-* Admin can add, edit and delete available reservation times.
+* Admin can create, read, update, delete (CRUD) maintenance hourly price, care features, available reservation times.
 * Admin can see all orders, users profiles, user kids profiles informations.
 * The nanny has access only to the pages assigned to her, that is: about, prices, maintenance, selection of reservation times, all users profiles and user user kids profiles informations, orders pages.
 * The user has access only to the pages assigned to her, that is: about, prices, maintenance, selection of reservation times, orders, user profile, user kids profiles pages.
-* The user can add, edit profile about himself.
-* The user can add, edit profiles about their kids.
+* The user can create, update profile about himself and their kids.
 * The user can choose the caring for his dog from the times specified by the admin and make a reservation.
 * The user can only see his orders.
 
